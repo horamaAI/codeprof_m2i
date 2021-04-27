@@ -3,6 +3,7 @@ package fr.formation;
 import java.util.ArrayList;
 
 import fr.formation.zoo.Animal;
+import fr.formation.zoo.AnimalFactory;
 import fr.formation.zoo.Chat;
 import fr.formation.zoo.Cheval;
 import fr.formation.zoo.Chien;
@@ -33,6 +34,9 @@ public class ApplicationZoo {
 		Piege piege = new Piege();
 //		chasseur.chasser(proie);
 		chasseur.chasser(piege);
+		
+		Felide monFelide = AnimalFactory.creerFelide();
+		monFelide.dormir();
 		
 		System.exit(200);
 		
