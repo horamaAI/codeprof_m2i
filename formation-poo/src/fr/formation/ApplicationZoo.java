@@ -2,6 +2,7 @@ package fr.formation;
 
 import java.util.ArrayList;
 
+import fr.formation.zoo.AdvancedSingleton;
 import fr.formation.zoo.Animal;
 import fr.formation.zoo.AnimalFactory;
 import fr.formation.zoo.Chat;
@@ -34,6 +35,12 @@ public class ApplicationZoo {
 //		Piege piege = new Piege();
 		Piege piege = Piege.getInstance();
 		Piege toto = Piege.getInstance();
+
+		Object instance = AdvancedSingleton.getInstance(Piege.class);
+		Object instance2 = AdvancedSingleton.getInstance(Piege.class);
+		System.out.println(instance);
+		System.out.println(instance2);
+		
 
 		System.out.println(piege);
 		System.out.println(toto);
