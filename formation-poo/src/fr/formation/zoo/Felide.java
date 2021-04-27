@@ -1,6 +1,6 @@
 package fr.formation.zoo;
 
-public class Felide extends Mammifere {
+public abstract class Felide extends Mammifere implements IChasseur {
 	private boolean tache;
 	
 	public boolean isTache() {

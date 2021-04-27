@@ -4,10 +4,15 @@ import java.util.ArrayList;
 
 import fr.formation.zoo.Animal;
 import fr.formation.zoo.Chat;
+import fr.formation.zoo.Cheval;
+import fr.formation.zoo.Chien;
 import fr.formation.zoo.CouleurAnimal;
 import fr.formation.zoo.Felide;
+import fr.formation.zoo.IChassable;
+import fr.formation.zoo.IChasseur;
 import fr.formation.zoo.Leopard;
-import fr.formation.zoo.Mammifere;
+import fr.formation.zoo.Loup;
+import fr.formation.zoo.Piege;
 
 public class ApplicationZoo {
 	public static void main(String[] args) {
@@ -17,6 +22,30 @@ public class ApplicationZoo {
 //		
 //		albert.dormir();
 //		bernard.dormir();
+		
+		
+		
+		Animal monAnimal = new Loup();
+		monAnimal.manger();
+		
+		IChasseur chasseur = new Chien();
+		IChassable proie = new Cheval();
+		Piege piege = new Piege();
+//		chasseur.chasser(proie);
+		chasseur.chasser(piege);
+		
+		System.exit(200);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		ArrayList<Felide> felides = new ArrayList<>();
 		

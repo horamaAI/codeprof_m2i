@@ -1,6 +1,6 @@
 package fr.formation.zoo;
 
-public class Mammifere extends Animal {
+public abstract class Mammifere extends Animal {
 	private CouleurAnimal couleur;
 
 	public CouleurAnimal getCouleur() {

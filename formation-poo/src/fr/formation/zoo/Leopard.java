@@ -8,4 +8,14 @@ public class Leopard extends Felide {
 	public void dormir() {
 		System.out.println("Le léopard dort ...");
 	}
+
+	@Override
+	public void manger() {
+		System.out.println("Le léopard mange ...");
+	}
+	
+	@Override
+	public void chasser(IChassable proie) {
+		System.out.println("Le léopard chasse ... " + proie);
+	}
 }

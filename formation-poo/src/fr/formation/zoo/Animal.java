@@ -1,6 +1,6 @@
 package fr.formation.zoo;
 
-public class Animal {
+public abstract class Animal implements IChassable {
 	private int age;
 	private int taille;
 	private String nom;
@@ -29,10 +29,7 @@ public class Animal {
 		this.nom = nom;
 	}
 	
-	
-	public void manger() {
-		System.out.println("L'animal mange ...");
-	}
+	public abstract void manger();
 	
 	public void dormir() {
 		System.out.println("L'animal dort ...");

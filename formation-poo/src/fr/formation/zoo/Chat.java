@@ -26,4 +26,14 @@ public class Chat extends Felide {
 	public boolean equals(Object obj) {
 		return true;
 	}
+
+	@Override
+	public void manger() {
+		System.out.println("Le chat mange ...");
+	}
+
+	@Override
+	public void chasser(IChassable proie) {
+		System.out.println("Le chat chasse ... " + proie);
+	}
 }
