@@ -21,6 +21,7 @@ public class ApplicationCarte {
 			//Création de la carte
 			Carte maCarte = new Carte();
 			
+			
 //			maCarte.nom = "Carte #" + i;
 			maCarte.setNom("Carte #" + i);
 			maCarte.setValeur(i);
@@ -29,6 +30,8 @@ public class ApplicationCarte {
 //			mesCartes[i] = maCarte;
 			mesCartes.add(maCarte);
 		}
+
+		System.out.println(Carte.counter);
 		
 		//Parcours des cartes : pour
 		for (int i = 0; i < mesCartes.size(); i++) {
