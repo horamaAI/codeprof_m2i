@@ -31,7 +31,13 @@ public class ApplicationZoo {
 		
 		IChasseur chasseur = new Chien();
 		IChassable proie = new Cheval();
-		Piege piege = new Piege();
+//		Piege piege = new Piege();
+		Piege piege = Piege.getInstance();
+		Piege toto = Piege.getInstance();
+
+		System.out.println(piege);
+		System.out.println(toto);
+		
 //		chasseur.chasser(proie);
 		chasseur.chasser(piege);
 		
