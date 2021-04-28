@@ -1,6 +1,7 @@
 package fr.formation;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fr.formation.jeu.Carte;
 import fr.formation.jeu.Equipe;
@@ -10,11 +11,11 @@ import fr.formation.jeu.Joueur;
 public class ApplicationCarte {
 	public static void main(String[] args) {
 //		Carte[] mesCartes = new Carte[32];
-		ArrayList<Carte> mesCartes = new ArrayList<>();
+		List<Carte> mesCartes = new ArrayList<>();
 //		Joueur[] mesJoueurs = new Joueur[4];
-		ArrayList<Joueur> mesJoueurs = new ArrayList<>();
+		List<Joueur> mesJoueurs = new ArrayList<>();
 //		Equipe[] mesEquipes = new Equipe[2];
-		ArrayList<Equipe> mesEquipes = new ArrayList<>();
+		List<Equipe> mesEquipes = new ArrayList<>();
 		
 		//32 fois : création d'une carte, affecter son nom & sa valeur
 		for (int i = 0; i < 32; i++) {
