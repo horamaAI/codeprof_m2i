@@ -1,8 +1,10 @@
 package fr.formation.soin;
 
+import fr.formation.zoo.Chat;
+
 public class SoigneurChatZoo implements ISoigneurChat {
 	@Override
-	public void endormir() {
+	public void endormir(Chat animal) {
 		System.out.println("Le soigneur chat zoo endort ...");
 	}
 

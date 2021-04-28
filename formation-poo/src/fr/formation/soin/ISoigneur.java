@@ -1,7 +1,9 @@
 package fr.formation.soin;
 
-public interface ISoigneur {
-	public void endormir();
+import fr.formation.zoo.Animal;
+
+public interface ISoigneur<T extends Animal> {
+	public void endormir(T animal);
 	public void soigner();
 	public void reveiller();
 }

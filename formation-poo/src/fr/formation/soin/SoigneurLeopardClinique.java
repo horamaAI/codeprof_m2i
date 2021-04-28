@@ -1,8 +1,10 @@
 package fr.formation.soin;
 
+import fr.formation.zoo.Leopard;
+
 public class SoigneurLeopardClinique extends SoigneurClinique implements ISoigneurLeopard {
 	@Override
-	public void endormir() {
+	public void endormir(Leopard animal) {
 		System.out.println("Le soigneur léopard clinique endort ...");
 	}
 

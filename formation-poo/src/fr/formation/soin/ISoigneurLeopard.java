@@ -1,5 +1,7 @@
 package fr.formation.soin;
 
-public interface ISoigneurLeopard extends ISoigneur {
+import fr.formation.zoo.Leopard;
+
+public interface ISoigneurLeopard extends ISoigneur<Leopard> {
 	public void rechercher();
 }

@@ -1,5 +1,7 @@
 package fr.formation.soin;
 
-public interface ISoigneurChat extends ISoigneur {
+import fr.formation.zoo.Chat;
+
+public interface ISoigneurChat extends ISoigneur<Chat> {
 
 }
