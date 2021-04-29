@@ -133,6 +133,15 @@ CREATE TABLE commande_detail (
 ) ENGINE = InnoDb;
 
 
+-- Si besoin de modifier clé primaire (ou clé étrangère)
+-- -> Suppression de la contrainte, puis recréation
+
+-- ALTER TABLE commande_detail ADD CMDE_ATTRIBUT_ID INT NOT NULL AFTER CMDE_COMMANDE_ID;
+-- ALTER TABLE commande_detail DROP PRIMARY KEY;
+
+-- ALTER TABLE commande_detail
+-- 	ADD CONSTRAINT Pk_CommandeDetail
+-- 	PRIMARY KEY (CMDE_PRODUIT_ID, CMDE_COMMANDE_ID, CMDE_ATTRIBUT_ID);
 
 
 
