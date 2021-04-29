@@ -48,6 +48,9 @@ ALTER TABLE commande_detail
 	FOREIGN KEY (CMDE_ATTRIBUT_ID)
 	REFERENCES attribut (ATTR_ID);
 
+-- Exemple suppresion clé étrangère
+-- ALTER TABLE commande_detail DROP FOREIGN KEY `FK_CommandeDetailAttribut`;
+
 
 -- Contrainte attribut vers produit
 ALTER TABLE attribut
