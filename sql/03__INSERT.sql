@@ -49,3 +49,13 @@ INSERT INTO commande (CMD_TOTAL, CMD_CLIENT_ID, CMD_ADRESSE_ID)
 INSERT INTO commande_detail (CMDE_PRODUIT_ID, CMDE_COMMANDE_ID, CMDE_ATTRIBUT_ID, CMDE_QUANTITE, CMDE_PRIX_UNITAIRE)
 	VALUES
 	(3, 1, 1, 2, 200);
+
+
+
+-- Quelques commandes pour supprimer / réinitialiser une table
+-- DELETE FROM produit;
+-- ALTER TABLE produit AUTO_INCREMENT = 1;
+
+-- SET FOREIGN_KEY_CHECKS = 0; -- Désactiver les contraintes de clés étrangères
+-- TRUNCATE TABLE produit; -- Attention avec ça, parce qu'il est pas copain les clés étrangères
+-- SET FOREIGN_KEY_CHECKS = 1; -- Réactiver les contraintes de clés étrangères
