@@ -183,3 +183,51 @@ Limit 2
 
 
 
+
+-- Mini boss
+-- Sélectionner les clients
+--   Le prix minimum d’un produit acheté, et son libellé
+--   Le prix maximum d’un produit acheté, et son libellé
+--   Son panier moyen
+--   Sa première date d’achat
+--   Sa dernière date d’achat
+SELECT
+	CLI_NOM,
+	MIN(CMDE_PRIX_UNITAIRE) AS PRIX_MINI,
+	(
+		SELECT PRO_LIBELLE
+		FROM produit p
+		INNER JOIN commande_detail cd2 ON cd2.CMDE_PRODUIT_ID = p.PRO_ID
+		INNER JOIN commande cmd2 ON cmd2.CMD_ID = cd2.CMDE_COMMANDE_ID
+		WHERE cmd2.CMD_CLIENT_ID = cli.CLI_ID
+		ORDER BY cd2.CMDE_PRIX_UNITAIRE ASC
+		LIMIT 1
+	) AS LIBELLE_MINI,
+	MAX(CMDE_PRIX_UNITAIRE) AS PRIX_MAXI,
+	(
+		SELECT PRO_LIBELLE
+		FROM produit p
+		INNER JOIN commande_detail cd2 ON cd2.CMDE_PRODUIT_ID = p.PRO_ID
+		INNER JOIN commande cmd2 ON cmd2.CMD_ID = cd2.CMDE_COMMANDE_ID
+		WHERE cmd2.CMD_CLIENT_ID = cli.CLI_ID
+		ORDER BY cd2.CMDE_PRIX_UNITAIRE DESC
+		LIMIT 1
+	) AS LIBELLE_MAXI,
+	AVG(CMD_TOTAL) AS PANIER_MOYEN,
+	MIN(CMD_DATE) AS PREMIERE_DATE,
+	MAX(CMD_DATE) AS DERNIERE_DATE
+
+FROM client cli
+INNER JOIN commande cmd ON cmd.CMD_CLIENT_ID = cli.CLI_ID
+INNER JOIN commande_detail cd ON cd.CMDE_COMMANDE_ID = cmd.CMD_ID
+GROUP BY CLI_NOM;
+
+
+-- Libellé produit, prix minimum
+SELECT PRO_LIBELLE
+FROM produit p
+INNER JOIN commande_detail cd ON cd.CMDE_PRODUIT_ID = p.PRO_ID
+INNER JOIN commande cmd ON cmd.CMD_ID = cd.CMDE_COMMANDE_ID
+WHERE cmd.CMD_CLIENT_ID = 1
+ORDER BY CMDE_PRIX_UNITAIRE ASC
+LIMIT 1;
