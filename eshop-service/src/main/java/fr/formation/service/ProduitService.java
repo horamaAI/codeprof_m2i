@@ -7,20 +7,18 @@ import fr.formation.exception.IdMustBePositiveException;
 import fr.formation.model.Produit;
 
 public class ProduitService {
+	private ProduitDao dao = new ProduitDao();
+	
 	public List<Produit> findAll() {
-		ProduitDao dao = new ProduitDao();
-		
-		return dao.findAll();
+		return this.dao.findAll();
 	}
 	
 	
-	public void findById(int id) {
+	public Produit findById(int id) {
 		if (id <= 0) {
 			throw new IdMustBePositiveException();
 		}
 		
-		ProduitDao dao = new ProduitDao();
-		
-		dao.findById(id);
+		return this.dao.findById(id);
 	}
 }
