@@ -1,57 +1,14 @@
 package fr.formation.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import fr.formation.model.Produit;
 
-public class ProduitDao {
-	private Connection connection;
-	
-	public ProduitDao() {
-		this.createConnection();
-	}
-	
-	public void createConnection() {
-		//Charger le pilote (même si pas obligatoire depuis Java 8)
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		}
-		
-		catch (ClassNotFoundException cnex) {
-			System.out.println("Chargement du pilote JDBC impossible ...");
-		}
-		
-		try {
-			System.out.println("CONNEXION !!");
-			//Se connecter au serveur
-			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/eshop?serverTimezone=UTC", "root", "");
-		}
-		
-		catch (SQLException sqle) {
-			System.out.println("Impossible de se connecter.");
-		}
-	}
-	
-	public ResultSet getResult(String query) {
-		try {
-			Statement statement = this.connection.createStatement();
-			
-			return statement.executeQuery(query);
-		}
-		
-		catch (Exception sqle) {
-			System.out.println("Impossible d'exécuter la requête.");
-			
-			return null;
-		}
-	}
-	
+public class ProduitDaoSql extends AbstractDaoSql implements IProduitDao {
 	public List<Produit> findAll() {
 		List<Produit> produits = new ArrayList<>();
 		
@@ -85,7 +42,7 @@ public class ProduitDao {
 		return produits;
 	}
 	
-	public Produit findById(int id) {
+	public Optional<Produit> findById(int id) {
 		try {
 			//Selectionner tous les produits
 			ResultSet resultSet = this.getResult("SELECT * FROM produit WHERE PRO_ID = " + id);
@@ -102,7 +59,7 @@ public class ProduitDao {
 				produit.setId(id);
 				produit.setLibelle(libelle);
 
-				return produit;
+				return Optional.of(produit);
 			}
 		}
 		
@@ -110,6 +67,24 @@ public class ProduitDao {
 			sqle.printStackTrace(); //TODO : à retirer avant mise en production ...
 		}
 		
+		return Optional.empty();
+	}
+
+	@Override
+	public Produit add(Produit entity) {
+		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Produit update(Produit entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean deleteById(int id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

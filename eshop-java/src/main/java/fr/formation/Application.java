@@ -1,6 +1,7 @@
 package fr.formation;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import fr.formation.exception.IdMustBePositiveException;
 import fr.formation.model.Produit;
@@ -17,13 +18,17 @@ public class Application {
 		}
 
 		try {
-			Produit monProduit = service.findById(0); //ça, ça doit fonctionner
+			Produit monProduit = service.findById(50);
 			
 			System.out.println(monProduit.getId() + " - " + monProduit.getLibelle());
 		}
 		
 		catch (IdMustBePositiveException idex) {
 			System.out.println("L'identifiant n'est pas strictement > 0 ...");
+		}
+		
+		catch (NoSuchElementException nex) {
+			System.out.println("Ce produit n'existe pas ...");
 		}
 	}
 }
