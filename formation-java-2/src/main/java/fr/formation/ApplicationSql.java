@@ -59,6 +59,8 @@ public class ApplicationSql {
 			preparedStatement.setBigDecimal(2, produitPrix);
 			preparedStatement.setInt(3, produitStock);
 			preparedStatement.setBigDecimal(4, produitPrixAchat);
+//			preparedStatement.setDouble(4, 9.99);
+//			preparedStatement.setFloat(4, 9.99f);
 			preparedStatement.setInt(5, produitFournisseurId);
 			preparedStatement.setInt(6, produitCategorieId);
 			
