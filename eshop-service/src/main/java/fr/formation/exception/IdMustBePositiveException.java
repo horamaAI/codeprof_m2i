@@ -1,5 +1,5 @@
 package fr.formation.exception;
 
-public class ChiffreNegatifException extends RuntimeException {
+public class IdMustBePositiveException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 }

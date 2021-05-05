@@ -32,8 +32,9 @@ public class LireChiffreApplication {
 //			}
 //		}
 	}
-	
-	public static int lire() {
+
+//	public static int lire() throws ChiffreNegatifException, ChiffreFormatException { //Si Checked Exception
+	public static int lire() { //Si Unchecked Exception
 		//Scanner
 		Scanner sc = new Scanner(System.in);
 		
