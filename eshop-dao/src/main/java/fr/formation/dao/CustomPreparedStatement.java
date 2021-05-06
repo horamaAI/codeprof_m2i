@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 public class CustomPreparedStatement {
 	private PreparedStatement statement;
+	private int index = 1;
 	
 	public CustomPreparedStatement(PreparedStatement statement) {
 		this.statement = statement;
@@ -20,6 +21,10 @@ public class CustomPreparedStatement {
 		}
 		
 		return this;
+	}
+	
+	public CustomPreparedStatement setParameter(Object value) {
+		return this.setParameter(this.index++, value);
 	}
 	
 	public void execute() {

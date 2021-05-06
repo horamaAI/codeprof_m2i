@@ -75,12 +75,12 @@ public class ProduitDaoSql extends AbstractDaoSql implements IProduitDao {
 	public Produit add(Produit entity) {
 		this
 			.prepare("INSERT INTO produit (PRO_LIBELLE, PRO_PRIX, PRO_STOCK, PRO_PRIX_ACHAT, PRO_FOURNISSEUR_ID, PRO_CATEGORIE_ID) VALUES (?, ?, ?, ?, ?, ?)")
-			.setParameter(1, entity.getLibelle())
-			.setParameter(2, new BigDecimal(20))
-			.setParameter(3, 0)
-			.setParameter(4, new BigDecimal(10))
-			.setParameter(5, 1)
-			.setParameter(6, 1)
+			.setParameter(entity.getLibelle()) //Libellé
+			.setParameter(new BigDecimal(20)) //Prix
+			.setParameter(0) //Stock
+			.setParameter(new BigDecimal(10)) //Prix d'achat
+			.setParameter(1) //ID Fournisseur
+			.setParameter(1) //ID Catégorie
 			.execute();
 		
 		return entity;
