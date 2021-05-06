@@ -5,16 +5,32 @@ import java.util.NoSuchElementException;
 
 import fr.formation.exception.IdMustBePositiveException;
 import fr.formation.model.Categorie;
+import fr.formation.model.Fournisseur;
 import fr.formation.model.Produit;
 import fr.formation.service.CategorieService;
+import fr.formation.service.FournisseurService;
 import fr.formation.service.ProduitService;
 
 public class Application {
 	public static void main(String[] args) {
 //		daoCategorie();
 //		daoProduit();
-		updateProduit();
+//		updateProduit();
+		addFournisseur();
 	}
+	
+	public static void addFournisseur() {
+		FournisseurService srvFournisseur = new FournisseurService();
+		
+		//Fabrication du fournisseur, avec ses infos
+		Fournisseur fournisseur = new Fournisseur();
+		
+		fournisseur.setNom("C-Discount");
+		
+		//Sauvegarde
+		srvFournisseur.add(fournisseur);
+	}
+	
 	
 	public static void updateProduit() {
 		ProduitService srvProduit = new ProduitService();
