@@ -88,13 +88,35 @@ public class ProduitDaoSql extends AbstractDaoSql implements IProduitDao {
 
 	@Override
 	public Produit update(Produit entity) {
-		// TODO UPDATE
-		return null;
+		StringBuilder query = new StringBuilder();
+		
+		query
+			.append("UPDATE produit SET PRO_LIBELLE = ?,")
+			.append(" PRO_PRIX = ?,")
+			.append(" PRO_STOCK = ?,")
+			.append(" PRO_PRIX_ACHAT = ?,")
+			.append(" PRO_FOURNISSEUR_ID = ?,")
+			.append(" PRO_CATEGORIE_ID = ?")
+			.append(" WHERE PRO_ID = ?");
+		
+		this
+			.prepare(query.toString())
+			.setParameter(entity.getLibelle()) //Libellé
+			.setParameter(new BigDecimal(20)) //Prix
+			.setParameter(0) //Stock
+			.setParameter(new BigDecimal(10)) //Prix d'achat
+			.setParameter(1) //ID Fournisseur
+			.setParameter(1) //ID Catégorie
+			.execute();
+		
+		return entity;
 	}
 
 	@Override
 	public boolean deleteById(int id) {
-		// TODO DELETE
-		return false;
+		return this
+			.prepare("DELETE FROM produit WHERE PRO_ID = ?")
+			.setParameter(id)
+			.execute();
 	}
 }

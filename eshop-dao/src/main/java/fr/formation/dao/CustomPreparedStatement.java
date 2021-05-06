@@ -27,13 +27,15 @@ public class CustomPreparedStatement {
 		return this.setParameter(this.index++, value);
 	}
 	
-	public void execute() {
+	public boolean execute() {
 		try {
 			this.statement.execute();
+			return true;
 		}
 		
 		catch (SQLException sqle) {
 			sqle.printStackTrace(); //TODO : remove ..
+			return false;
 		}
 	}
 }
