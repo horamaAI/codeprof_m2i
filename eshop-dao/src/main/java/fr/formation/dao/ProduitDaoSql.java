@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 import fr.formation.model.Categorie;
+import fr.formation.model.Fournisseur;
 import fr.formation.model.Produit;
 
 public class ProduitDaoSql extends AbstractDaoSql implements IProduitDao {
@@ -94,8 +95,8 @@ public class ProduitDaoSql extends AbstractDaoSql implements IProduitDao {
 			.setParameter(new BigDecimal(20)) //Prix
 			.setParameter(0) //Stock
 			.setParameter(new BigDecimal(10)) //Prix d'achat
-			.setParameter(1) //ID Fournisseur
-			.setParameter(1) //ID Catégorie
+			.setParameter(entity.getFournisseur().getId()) //ID Fournisseur
+			.setParameter(entity.getCategorie().getId()) //ID Catégorie
 			.execute();
 		
 		return entity;
@@ -120,8 +121,8 @@ public class ProduitDaoSql extends AbstractDaoSql implements IProduitDao {
 			.setParameter(new BigDecimal(20)) //Prix
 			.setParameter(0) //Stock
 			.setParameter(new BigDecimal(10)) //Prix d'achat
-			.setParameter(1) //ID Fournisseur
-			.setParameter(1) //ID Catégorie
+			.setParameter(entity.getFournisseur().getId()) //ID Fournisseur
+			.setParameter(entity.getCategorie().getId()) //ID Catégorie
 			.setParameter(entity.getId()) //ID du produit à modifier
 			.execute();
 		
@@ -141,13 +142,23 @@ public class ProduitDaoSql extends AbstractDaoSql implements IProduitDao {
 			//Récupérer les informations
 			int id = resultSet.getInt("PRO_ID");
 			String libelle = resultSet.getString("PRO_LIBELLE");
+			int categoryId = resultSet.getInt("PRO_CATEGORIE_ID");
+			int fournisseurId = resultSet.getInt("PRO_FOURNISSEUR_ID");
 			
-			//Instancier un produit
+			//Instancier un produit, une catégorie, un fournisseur
 			Produit produit = new Produit();
+			Categorie categorie = new Categorie();
+			Fournisseur fournisseur = new Fournisseur();
 			
 			//Affecter ses informations
 			produit.setId(id);
 			produit.setLibelle(libelle);
+			produit.setCategorie(categorie);
+			produit.setFournisseur(fournisseur);
+			
+			categorie.setId(categoryId);
+
+			fournisseur.setId(fournisseurId);
 			
 			//On retourne le produit
 			return produit;

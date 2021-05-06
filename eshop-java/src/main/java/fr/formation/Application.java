@@ -11,8 +11,22 @@ import fr.formation.service.ProduitService;
 
 public class Application {
 	public static void main(String[] args) {
-		daoCategorie();
-		daoProduit();
+//		daoCategorie();
+//		daoProduit();
+		updateProduit();
+	}
+	
+	public static void updateProduit() {
+		ProduitService srvProduit = new ProduitService();
+		
+		//Récupérer le produit
+		Produit produit = srvProduit.findById(1);
+		
+		//Modifier les informations
+		produit.setLibelle("PRODUIT EDITE DEPUIS JAVA");
+		
+		//Sauvegarde du produit
+		srvProduit.update(produit);
 	}
 	
 	public static void daoCategorie() {
