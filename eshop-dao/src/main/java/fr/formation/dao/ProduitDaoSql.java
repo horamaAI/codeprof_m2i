@@ -1,7 +1,6 @@
 package fr.formation.dao;
 
 import java.math.BigDecimal;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -74,23 +73,15 @@ public class ProduitDaoSql extends AbstractDaoSql implements IProduitDao {
 
 	@Override
 	public Produit add(Produit entity) {
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO produit (PRO_LIBELLE, PRO_PRIX, PRO_STOCK, PRO_PRIX_ACHAT, PRO_FOURNISSEUR_ID, PRO_CATEGORIE_ID) VALUES (?, ?, ?, ?, ?, ?)");
-			
-			preparedStatement.setString(1, entity.getLibelle());
-			preparedStatement.setBigDecimal(2, new BigDecimal(20));
-			preparedStatement.setInt(3, 0);
-			preparedStatement.setBigDecimal(4, new BigDecimal(10));
-			preparedStatement.setInt(5, 1);
-			preparedStatement.setInt(6, 1);
-			
-			//ON EXECUTE LA REQUETE
-			preparedStatement.executeUpdate();
-		}
-		
-		catch (SQLException sqle) {
-			sqle.printStackTrace(); //TODO to remove ...
-		}
+		this
+			.prepare("INSERT INTO produit (PRO_LIBELLE, PRO_PRIX, PRO_STOCK, PRO_PRIX_ACHAT, PRO_FOURNISSEUR_ID, PRO_CATEGORIE_ID) VALUES (?, ?, ?, ?, ?, ?)")
+			.setParameter(1, entity.getLibelle())
+			.setParameter(2, new BigDecimal(20))
+			.setParameter(3, 0)
+			.setParameter(4, new BigDecimal(10))
+			.setParameter(5, 1)
+			.setParameter(6, 1)
+			.execute();
 		
 		return entity;
 	}

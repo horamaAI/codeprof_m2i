@@ -49,4 +49,16 @@ public abstract class AbstractDaoSql {
 			return null;
 		}
 	}
+	
+	public CustomPreparedStatement prepare(String query) {
+		try {
+			return new CustomPreparedStatement(connection.prepareStatement(query));
+		}
+		
+		catch (SQLException sqle) {
+			sqle.printStackTrace(); //TODO : remove ...
+			
+			return null;
+		}
+	}
 }
