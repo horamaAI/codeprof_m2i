@@ -2,15 +2,21 @@ package fr.formation.service;
 
 import java.util.List;
 
-import fr.formation.dao.ProduitDaoSql;
+import fr.formation.dao.DAOFactory;
+import fr.formation.dao.IProduitDao;
 import fr.formation.exception.IdMustBePositiveException;
+import fr.formation.model.Categorie;
 import fr.formation.model.Produit;
 
 public class ProduitService {
-	private ProduitDaoSql dao = new ProduitDaoSql();
+	private IProduitDao dao = DAOFactory.createProduitDao();
 	
 	public List<Produit> findAll() {
 		return this.dao.findAll();
+	}
+	
+	public List<Produit> findAllByCategorie(Categorie categorie) {
+		return this.dao.findAllByCategorie(categorie);
 	}
 	
 	
