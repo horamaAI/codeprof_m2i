@@ -107,6 +107,7 @@ public class ProduitDaoSql extends AbstractDaoSql implements IProduitDao {
 			.setParameter(new BigDecimal(10)) //Prix d'achat
 			.setParameter(1) //ID Fournisseur
 			.setParameter(1) //ID Catégorie
+			.setParameter(entity.getId()) //ID du produit à modifier
 			.execute();
 		
 		return entity;
