@@ -1,6 +1,7 @@
 package fr.formation.dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CustomPreparedStatement {
@@ -36,6 +37,17 @@ public class CustomPreparedStatement {
 		catch (SQLException sqle) {
 			sqle.printStackTrace(); //TODO : remove ..
 			return false;
+		}
+	}
+	
+	public ResultSet executeQuery() {
+		try {
+			return this.statement.executeQuery();
+		}
+		
+		catch (SQLException sqle) {
+			sqle.printStackTrace(); //TODO : remove ..
+			return null;
 		}
 	}
 }

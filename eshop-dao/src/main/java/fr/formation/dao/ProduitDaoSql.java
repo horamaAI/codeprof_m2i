@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import fr.formation.model.Categorie;
 import fr.formation.model.Produit;
 
 public class ProduitDaoSql extends AbstractDaoSql implements IProduitDao {
@@ -19,16 +20,7 @@ public class ProduitDaoSql extends AbstractDaoSql implements IProduitDao {
 			
 			//Parcours des résultats
 			while (resultSet.next()) { //Tant qu'on a un résultat
-				//Récupérer les informations
-				int id = resultSet.getInt("PRO_ID");
-				String libelle = resultSet.getString("PRO_LIBELLE");
-				
-				//Instancier un produit
-				Produit produit = new Produit();
-				
-				//Affecter ses informations
-				produit.setId(id);
-				produit.setLibelle(libelle);
+				Produit produit = this.map(resultSet);
 				
 				//L'ajouter à la liste
 				produits.add(produit);
@@ -43,6 +35,37 @@ public class ProduitDaoSql extends AbstractDaoSql implements IProduitDao {
 		return produits;
 	}
 	
+	public List<Produit> findAllByCategorieId(int categorieId) {
+		List<Produit> produits = new ArrayList<>();
+		
+		try {
+			//Selectionner tous les produits qui correspondent à la catégorie
+			ResultSet resultSet = this
+					.prepare("SELECT * FROM produit WHERE PRO_CATEGORIE_ID = ?")
+					.setParameter(categorieId)
+					.executeQuery();
+			
+			//Parcours des résultats
+			while (resultSet.next()) { //Tant qu'on a un résultat
+				Produit produit = this.map(resultSet);
+				
+				//L'ajouter à la liste
+				produits.add(produit);
+			}
+		}
+		
+		catch (SQLException sqle) {
+			sqle.printStackTrace(); //TODO : à retirer avant mise en production ...
+		}
+		
+		//Retourner la liste
+		return produits;
+	}
+	
+	public List<Produit> findAllByCategorie(Categorie categorie) {
+		return this.findAllByCategorieId(categorie.getId());
+	}
+	
 	public Optional<Produit> findById(int id) {
 		try {
 			//Selectionner tous les produits
@@ -50,15 +73,7 @@ public class ProduitDaoSql extends AbstractDaoSql implements IProduitDao {
 			
 			//Parcours du résultat
 			if (resultSet.next()) { //Si on a un résultat
-				//Récupérer les informations
-				String libelle = resultSet.getString("PRO_LIBELLE");
-				
-				//Instancier le produit
-				Produit produit = new Produit();
-				
-				//Affecter ses informations
-				produit.setId(id);
-				produit.setLibelle(libelle);
+				Produit produit = this.map(resultSet);
 
 				return Optional.of(produit);
 			}
@@ -119,5 +134,28 @@ public class ProduitDaoSql extends AbstractDaoSql implements IProduitDao {
 			.prepare("DELETE FROM produit WHERE PRO_ID = ?")
 			.setParameter(id)
 			.execute();
+	}
+	
+	private Produit map(ResultSet resultSet) {
+		try {
+			//Récupérer les informations
+			int id = resultSet.getInt("PRO_ID");
+			String libelle = resultSet.getString("PRO_LIBELLE");
+			
+			//Instancier un produit
+			Produit produit = new Produit();
+			
+			//Affecter ses informations
+			produit.setId(id);
+			produit.setLibelle(libelle);
+			
+			//On retourne le produit
+			return produit;
+		}
+		
+		catch (SQLException sqle) {
+			sqle.printStackTrace(); //TODO : remove..
+			return null;
+		}
 	}
 }
