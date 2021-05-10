@@ -14,9 +14,9 @@ import fr.formation.service.ProduitService;
 public class Application {
 	public static void main(String[] args) {
 //		daoCategorie();
-//		daoProduit();
+		daoProduit();
 //		updateProduit();
-		addFournisseur();
+//		addFournisseur();
 	}
 	
 	public static void addFournisseur() {

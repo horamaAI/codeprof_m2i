@@ -2,11 +2,11 @@ package fr.formation.dao;
 
 public class DAOFactory {
 	public static IProduitDao createProduitDao() {
-		return new ProduitDaoSql();
+		return new ProduitDaoHibernate();
 	}
 	
 	public static ICategorieDao createCategoryDao() {
-		return new CategorieDaoSql();
+		return new CategorieDaoHibernate();
 	}
 	
 	public static IFournisseurDao createFournisseurDao() {
