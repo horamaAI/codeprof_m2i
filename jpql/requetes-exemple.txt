@@ -1,0 +1,44 @@
+-- Le client qui s'appelle #Albert #DUPONT
+select c from Client c where c.prenom = :prenom and c.nom = :nom
+select c from Client c where c.prenom = ?1 and c.nom = ?2
+
+-- Les produits dont le prix est > #100 euros
+select p from Produit p where p.prix > ?1
+
+-- Les produits du fournisseur #2
+select p from Produit p where p.fournisseur.id = ?1
+-- ou bien si on veut le fournisseur avec sa liste de produits
+select f from Fournisseur f left join fetch f.produits where f.id = ?1
+
+-- Le(s) fournisseur(s) qui ont des produits de la catégorie #1
+select f from Fournisseur f
+inner join f.produits p
+where p.categorie.id = ?1
+
+-- Les produits hors stock (stock = 0)
+select p from Produit p where p.stock = 0
+
+-- Les clients qui ont commandé un produit qui est hors stock aujourd'hui (en ce moment même)
+select c from Client c
+inner join c.commandes cmd
+inner join cmd.details d
+where d.produit.stock = 0
+
+-- Le fournisseur (#1) avec les clients qui lui ont acheté des produits
+--> Fournisseur -> Produits -> CommandeDetails -> Commande -> Client
+select f from Fournisseur f
+inner join fetch f.produits p
+inner join fetch p.details d
+-- inner join fetch d.commande cmd
+-- inner join fetch cmd.client c
+where f.id = ?1
+
+-- Compter le nombre de produits
+select count(*) from Produit p
+select count(p) from Produit p
+select count(p.id) from Produit p
+
+-- Compter le nombre de produits du fournisseur #1 achetés
+select count(distinct p) from Produit p
+inner join p.details d
+where p.fournisseur.id = ?1
