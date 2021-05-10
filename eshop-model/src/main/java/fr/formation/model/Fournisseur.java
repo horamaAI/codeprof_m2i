@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,8 @@ public class Fournisseur {
 	private String nom;
 	
 	//Relation inverse non obligatoire
-	@OneToMany(mappedBy = "fournisseur")
+	//Fetch EAGER => Charger tous les produits du fournisseur, en même temps
+	@OneToMany(mappedBy = "fournisseur", fetch = FetchType.EAGER)
 	private List<Produit> produits;
 
 	public int getId() {
