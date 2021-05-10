@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import fr.formation.model.Categorie;
 import fr.formation.model.Fournisseur;
 import fr.formation.model.Produit;
 
@@ -18,6 +19,29 @@ public class TestHibernateApplication {
 		//Récupérer un EntityManager
 		EntityManager em = emf.createEntityManager();
 		
+		
+		
+		
+		//Ajouter une catégorie
+		Categorie maCategorie = new Categorie();
+		maCategorie.setLibelle("CATEGORIE FROM HIBERNATE");
+		
+		//Démarrer une transaction
+		em.getTransaction().begin();
+		
+		em.persist(maCategorie); //persist est utilisé pour les INSERT
+//		em.merge(maCategorie); //merge est utilisé pour les UPDATE
+//		maCategorie = em.merge(maCategorie); //merge est utilisé pour les UPDATE, donc penser à récupérer l'instance
+		
+		//Commiter la transaction (ou rollbacker si on souhaite annuler les changements)
+		em.getTransaction().commit();
+		
+		System.out.println(maCategorie.getId());
+		
+		System.exit(0);
+		
+		
+		//Rechercher des éléments
 		Produit monProduit = em.find(Produit.class, 1);
 		System.out.println(monProduit.getLibelle());
 		System.out.println(monProduit.getCategorie().getLibelle());
