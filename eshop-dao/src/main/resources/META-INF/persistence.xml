@@ -11,6 +11,9 @@
 		<class>fr.formation.model.Client</class>
 		<class>fr.formation.model.Fournisseur</class>
 		<class>fr.formation.model.Produit</class>
+		<class>fr.formation.model.Attribut</class>
+		<class>fr.formation.model.Commande</class>
+		<class>fr.formation.model.CommandeDetail</class>
 		
 		<properties>
 			<property name="hibernate.connection.url"
