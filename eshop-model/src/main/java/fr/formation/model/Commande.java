@@ -2,6 +2,7 @@ package fr.formation.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -39,6 +41,9 @@ public class Commande {
 	@ManyToOne
 	@JoinColumn(name = "CMD_ADRESSE_ID", nullable = false)
 	private Adresse adresse;
+	
+	@OneToMany(mappedBy = "id.commande")
+	private List<CommandeDetail> details;
 
 	public int getId() {
 		return id;
@@ -86,5 +91,13 @@ public class Commande {
 
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
+	}
+
+	public List<CommandeDetail> getDetails() {
+		return details;
+	}
+
+	public void setDetails(List<CommandeDetail> details) {
+		this.details = details;
 	}
 }
