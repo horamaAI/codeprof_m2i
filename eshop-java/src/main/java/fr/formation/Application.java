@@ -5,9 +5,12 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import fr.formation.exception.IdMustBePositiveException;
+import fr.formation.model.Attribut;
+import fr.formation.model.AttributType;
 import fr.formation.model.Categorie;
 import fr.formation.model.Fournisseur;
 import fr.formation.model.Produit;
+import fr.formation.service.AttributService;
 import fr.formation.service.CategorieService;
 import fr.formation.service.FournisseurService;
 import fr.formation.service.ProduitService;
@@ -18,7 +21,27 @@ public class Application {
 //		daoProduit();
 //		updateProduit();
 //		addFournisseur();
-		addProduit();
+//		addProduit();
+		addAttribut();
+	}
+	
+	public static void addAttribut() {
+		AttributService srvAttribut = new AttributService();
+		ProduitService srvProduit = new ProduitService();
+		
+		//Récupérer un produit
+		Produit produit = srvProduit.findById(2);
+		
+		//Créer un attribut
+		Attribut attribut = new Attribut();
+		
+		//Affecte ses informations
+		attribut.setProduit(produit);
+		attribut.setType(AttributType.COULEUR);
+		attribut.setValeur("ROUGE");
+		
+		//Sauvegarder l'attribut
+		srvAttribut.add(attribut);
 	}
 	
 	public static void addProduit() {

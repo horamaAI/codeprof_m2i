@@ -33,6 +33,8 @@ public abstract class AbstractDaoHibernate<T> {
 		}
 		
 		catch (Exception ex) {
+			ex.printStackTrace();
+			
 			//On annule la requête si erreur détectée
 			this.em.getTransaction().rollback();
 		}
@@ -53,6 +55,8 @@ public abstract class AbstractDaoHibernate<T> {
 		}
 		
 		catch (Exception ex) {
+			ex.printStackTrace();
+			
 			//On annule la requête si erreur détectée
 			this.em.getTransaction().rollback();
 		}
@@ -76,6 +80,8 @@ public abstract class AbstractDaoHibernate<T> {
 		}
 		
 		catch (Exception ex) {
+			ex.printStackTrace();
+			
 			//Rollback de la transaction (annuler les changements)
 			this.em.getTransaction().rollback();
 			

@@ -12,4 +12,8 @@ public class DAOFactory {
 	public static IFournisseurDao createFournisseurDao() {
 		return new FournisseurDaoHibernate();
 	}
+	
+	public static IAttributDao createAttributDao() {
+		return new AttributDaoHibernate();
+	}
 }
