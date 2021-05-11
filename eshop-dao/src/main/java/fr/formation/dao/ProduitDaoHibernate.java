@@ -3,21 +3,10 @@ package fr.formation.dao;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import fr.formation.model.Categorie;
 import fr.formation.model.Produit;
 
-public class ProduitDaoHibernate implements IProduitDao {
-	private EntityManager em;
-	
-	public ProduitDaoHibernate() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("EShopUnit");
-		this.em = emf.createEntityManager();
-	}
-
+public class ProduitDaoHibernate extends AbstractDaoHibernate<Produit> implements IProduitDao {
 	@Override
 	public List<Produit> findAll() {
 		return this.em
@@ -51,58 +40,6 @@ public class ProduitDaoHibernate implements IProduitDao {
 		return Optional.ofNullable(
 			this.em.find(Produit.class, id)
 		);
-	}
-
-	@Override
-	public Produit add(Produit entity) {
-		//Démarrage de la transaction
-		this.em.getTransaction().begin();
-		
-		//Persister
-		this.em.persist(entity);
-		
-		//Commit de la transaction
-		this.em.getTransaction().commit();
-		
-		return entity;
-	}
-
-	@Override
-	public Produit update(Produit entity) {
-		//Démarrage de la transaction
-		this.em.getTransaction().begin();
-		
-		//Sauvegarde
-		entity = this.em.merge(entity);
-		
-		//Commit de la transaction
-		this.em.getTransaction().commit();
-		
-		return entity;
-	}
-
-	@Override
-	public boolean deleteById(int id) {
-		//Démarrage de la transaction
-		this.em.getTransaction().begin();
-		
-		try {
-			this.em.remove(
-				this.findById(id)
-			);
-
-			//Commit de la transaction
-			this.em.getTransaction().commit();
-			
-			return true;
-		}
-		
-		catch (Exception ex) {
-			//Rollback de la transaction (annuler les changements)
-			this.em.getTransaction().rollback();
-			
-			return false;
-		}
 	}
 
 	@Override
