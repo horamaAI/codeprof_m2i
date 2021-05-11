@@ -1,5 +1,6 @@
 package fr.formation;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -14,9 +15,39 @@ import fr.formation.service.ProduitService;
 public class Application {
 	public static void main(String[] args) {
 //		daoCategorie();
-		daoProduit();
+//		daoProduit();
 //		updateProduit();
 //		addFournisseur();
+		addProduit();
+	}
+	
+	public static void addProduit() {
+		FournisseurService srvFournisseur = new FournisseurService();
+		CategorieService srvCategorie = new CategorieService();
+		ProduitService srvProduit = new ProduitService();
+		
+		//Récupérer une catégorie
+		Categorie categorie = srvCategorie.findById(3);
+		
+		//Récupérer un fournisseur
+		Fournisseur fournisseur = srvFournisseur.findById(2);
+		
+		//Créer un produit
+		Produit produit = new Produit();
+		
+		//Affecter ses informations
+		produit.setCategorie(categorie);
+		produit.setFournisseur(fournisseur);
+		
+		produit.setLibelle("PRODUIT FROM JAVA HIB AVEC INFOS");
+		produit.setPrix(new BigDecimal(100));
+		produit.setPrixAchat(new BigDecimal(10));
+		produit.setDescription("Une petite description ...");
+		produit.setImage("url de l'image");
+		produit.setStock(5);
+		
+		//Sauvegarde le produit en base de données
+		srvProduit.add(produit);
 	}
 	
 	public static void addFournisseur() {

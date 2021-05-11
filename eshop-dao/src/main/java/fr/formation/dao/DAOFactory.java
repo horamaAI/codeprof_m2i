@@ -10,6 +10,6 @@ public class DAOFactory {
 	}
 	
 	public static IFournisseurDao createFournisseurDao() {
-		return new FournisseurDaoSql();
+		return new FournisseurDaoHibernate();
 	}
 }

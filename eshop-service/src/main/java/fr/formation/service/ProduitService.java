@@ -27,6 +27,13 @@ public class ProduitService {
 		return this.dao.findById(id).orElseThrow();
 	}
 	
+	public void add(Produit produit) {
+		//Eventuellement ajouter des vérifications / validations ici
+		
+		//On demande à la DAO de sauvegarder (ajout)
+		this.dao.add(produit);
+	}
+	
 	public void update(Produit produit) {
 		//Eventuellement vérifier si le produit n'est pas null, que l'identifiant existe bien, etc.
 		

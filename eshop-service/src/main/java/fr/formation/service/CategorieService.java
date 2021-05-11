@@ -14,7 +14,6 @@ public class CategorieService {
 		return this.dao.findAll();
 	}
 	
-	
 	public Categorie findById(int id) {
 		if (id <= 0) {
 			throw new IdMustBePositiveException();
