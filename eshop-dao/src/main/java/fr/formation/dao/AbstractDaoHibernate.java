@@ -1,5 +1,6 @@
 package fr.formation.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
@@ -9,16 +10,30 @@ import javax.persistence.Persistence;
 public abstract class AbstractDaoHibernate<T> {
 	private static EntityManagerFactory emf;
 	protected EntityManager em;
+	private Class<T> clz;
 	
-	public AbstractDaoHibernate() {
+	public AbstractDaoHibernate(Class<T> clz) {
+		this.clz = clz;
+		
 		if (emf == null) {
 			emf = Persistence.createEntityManagerFactory("EShopUnit");
 		}
 		
 		this.em = emf.createEntityManager();
 	}
+	
+	public List<T> findAll() {
+		return this.em
+					.createQuery("select e from " + this.clz.getSimpleName() + " e", this.clz)
+					.getResultList();
+	}
 
-	public abstract Optional<T> findById(int id);
+//	public abstract Optional<T> findById(int id);
+	public Optional<T> findById(int id) {
+		return Optional.ofNullable(
+			this.em.find(this.clz, id)
+		);
+	}
 	
 	public T add(T entity) {
 		try {
