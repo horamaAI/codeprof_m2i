@@ -1,6 +1,8 @@
 package fr.formation.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,9 +22,22 @@ public class HomeServlet extends HttpServlet {
 		String myUsername = req.getParameter("user");
 //		String myIdStr = req.getParameter("id");
 //		int id = Integer.parseInt(myIdStr);
+		String mySessionUserme = (String)req.getSession().getAttribute("sessionUser");
+		List<String> prenoms = new ArrayList<String>();
+		
+		//Quelques prénoms
+		prenoms.add("Jérémy");
+		prenoms.add("Eric");
+		prenoms.add("Anh");
+		
+//		if (mySessionUserme == null) { //Pas connecté !
+//			resp.sendRedirect("login");
+//			return; //Arrêter la méthode à ce niveau
+//		}
 		
 		//Utilisation du scope Request
 		req.setAttribute("utilisateur", myUsername);
+		req.setAttribute("prenoms", prenoms);
 		
 		//DELEGATION DE REQUETE
 		this

@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
 		//Vérifier le login & password
 		if (myUsername.equals("toto") && myPassword.equals("titi")) {
 			//Enregistrer le username dans la session utilisateur
+			req.getSession().setAttribute("sessionUser", myUsername);
 			
 			//Rediriger vers /home
 			resp.sendRedirect("home");
