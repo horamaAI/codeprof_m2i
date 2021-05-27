@@ -15,7 +15,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>fr.formation</groupId>
-			<artifactId>eshop-model</artifactId>
+			<artifactId>eshop-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		

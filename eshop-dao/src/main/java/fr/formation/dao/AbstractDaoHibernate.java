@@ -13,6 +13,15 @@ public abstract class AbstractDaoHibernate<T> {
 	private Class<T> clz;
 	
 	public AbstractDaoHibernate(Class<T> clz) {
+		//Charger le pilote (même si pas obligatoire depuis Java 8)
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		}
+		
+		catch (ClassNotFoundException cnex) {
+			System.out.println("Chargement du pilote JDBC impossible ...");
+		}
+		
 		this.clz = clz;
 		
 		if (emf == null) {
