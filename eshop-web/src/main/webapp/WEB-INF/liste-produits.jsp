@@ -5,6 +5,14 @@
 	<jsp:attribute name="title">Liste des produits</jsp:attribute>
 	
 	<jsp:body>
+		<c:if test="${ param.produitAjout == true }">
+			<div class="alert alert-success" role="alert">
+				Le produit a bien été ajouté !
+			</div>
+		</c:if>
+		
+		<a href="ajouter-produit" class="btn btn-success">Ajouter un produit</a>
+		
 		<table class="table table-striped">
 			<thead>
 				<tr>
