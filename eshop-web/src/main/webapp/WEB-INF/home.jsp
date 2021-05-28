@@ -1,14 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Accueil</title>
-	</head>
+<t:layout>
+	<jsp:attribute name="title">Hello</jsp:attribute>
 	
-	<body>
-		<h1>Hello</h1>
-		
+	<jsp:body>
 		<c:if test="${ sessionUser == null }">
 			<p>Vous n'êtes pas connecté</p>
 		</c:if>
@@ -39,5 +35,5 @@
 		</ul>
 		
 		<%-- <img src="assets/img/${ utilisateur.id }.png" /> --%>
-	</body>
-</html>
+	</jsp:body>
+</t:layout>

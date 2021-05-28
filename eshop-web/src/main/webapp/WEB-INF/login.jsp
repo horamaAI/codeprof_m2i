@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Connexion</title>
-	</head>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
+
+<t:layout>
+	<jsp:attribute name="title">Se connecter</jsp:attribute>
 	
-	<body>
-		<h1>Se connecter</h1>
-		
+	<jsp:body>
 		<form method="POST">
 			<div>
 				<label>Nom d'utilisateur</label>
@@ -22,5 +20,5 @@
 				<input type="submit" value="Se connecter" />
 			</div>
 		</form>
-	</body>
-</html>
+	</jsp:body>
+</t:layout>
