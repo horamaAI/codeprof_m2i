@@ -18,6 +18,7 @@ public class ListeFournisseurServlet extends HttpServlet {
 		
 		//On enregistre la liste de fournisseurs dans le scope Request
 		req.setAttribute("fournisseurs", srvFournisseur.findAll());
+		srvFournisseur.deleteById(2);
 		
 		//On délègue vers la vue
 		this.getServletContext()

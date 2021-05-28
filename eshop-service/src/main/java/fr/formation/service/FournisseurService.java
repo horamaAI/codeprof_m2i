@@ -28,4 +28,8 @@ public class FournisseurService {
 		//On demande à la DAO d'ajouter le fournisseur
 		this.daoFournisseur.add(fournisseur);
 	}
+	
+	public void deleteById(int id) {
+		this.daoFournisseur.deleteById(id);
+	}
 }
