@@ -1,41 +1,34 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Ajouter un fournisseur</title>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-	</head>
+<t:layout>
+	<jsp:attribute name="title">Ajouter un nouveau fournisseur</jsp:attribute>
 	
-	<body>
-		<div class="container">
-			<h1>Ajouter un fournisseur</h1>
+	<jsp:body>
+		<form method="POST">
+			<div>
+				<label>Nom</label>
+				<input type="text" name="nom" />
+			</div>
 			
-			<form method="POST">
-				<div>
-					<label>Nom</label>
-					<input type="text" name="nom" />
-				</div>
-				
-				<div>
-					<label>Adresse e-mail</label>
-					<input type="email" name="mail" />
-				</div>
-				
-				<div>
-					<label>SIRET</label>
-					<input type="text" name="siret" />
-				</div>
-				
-				<div>
-					<label>Téléphone</label>
-					<input type="tel" name="telephone" />
-				</div>
-				
-				<div>
-					<input type="submit" class="btn btn-success" value="Ajouter" />
-				</div>
-			</form>
-		</div>
-	</body>
-</html>
+			<div>
+				<label>Adresse e-mail</label>
+				<input type="email" name="mail" />
+			</div>
+			
+			<div>
+				<label>SIRET</label>
+				<input type="text" name="siret" />
+			</div>
+			
+			<div>
+				<label>Téléphone</label>
+				<input type="tel" name="telephone" />
+			</div>
+			
+			<div>
+				<input type="submit" class="btn btn-success" value="Ajouter" />
+			</div>
+		</form>
+	</jsp:body>
+</t:layout>

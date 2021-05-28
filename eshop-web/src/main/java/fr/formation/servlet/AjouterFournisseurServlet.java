@@ -42,6 +42,9 @@ public class AjouterFournisseurServlet extends HttpServlet {
 		FournisseurService srvFournisseur = new FournisseurService();
 		srvFournisseur.add(monFournisseur);
 		
+		//Affichage d'un message de confirmation solution #1
+		req.getSession().setAttribute("fournisseurAjout", true);
+		
 		//Redirection vers la liste des fournisseurs
 		resp.sendRedirect("liste-fournisseur");
 	}

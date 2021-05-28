@@ -18,10 +18,14 @@ public class ListeFournisseurServlet extends HttpServlet {
 		
 		//On enregistre la liste de fournisseurs dans le scope Request
 		req.setAttribute("fournisseurs", srvFournisseur.findAll());
+		req.setAttribute("test", "Toto");
 		
 		//On délègue vers la vue
 		this.getServletContext()
 			.getRequestDispatcher("/WEB-INF/liste-fournisseurs.jsp")
 			.forward(req, resp);
+		
+		//On supprime ici l'attribut pour le message de confirmation (solution #1)
+		req.getSession().setAttribute("fournisseurAjout", null);
 	}
 }

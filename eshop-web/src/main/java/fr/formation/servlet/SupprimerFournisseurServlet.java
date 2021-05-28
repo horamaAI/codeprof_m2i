@@ -22,7 +22,7 @@ public class SupprimerFournisseurServlet extends HttpServlet {
 		//On supprime ....
 		srvFournisseur.deleteById(fournisseurId);
 		
-		//On redirige vers la page de liste des fournisseurs
-		resp.sendRedirect("liste-fournisseur");
+		//On redirige vers la page de liste des fournisseurs (avec un message de confirmation, solution #2)
+		resp.sendRedirect("liste-fournisseur?fournisseurSupprime=true");
 	}
 }

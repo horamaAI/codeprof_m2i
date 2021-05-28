@@ -57,7 +57,7 @@ public class ModifierFournisseurServlet extends HttpServlet {
 		//Sauvegarder
 		srvFournisseur.update(monFournisseur);
 		
-		//On redirige vers la liste des fournisseurs
-		resp.sendRedirect("liste-fournisseur");
+		//On redirige vers la liste des fournisseurs (avec message de confirmation, solution #2)
+		resp.sendRedirect("liste-fournisseur?fournisseurModifie=true");
 	}
 }
