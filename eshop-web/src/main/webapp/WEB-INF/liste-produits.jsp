@@ -11,6 +11,35 @@
 			</div>
 		</c:if>
 		
+		<h2>Démo VUEJS</h2>
+		<div id="vue">
+			<form>
+				<input v-model="produit.libelle" />
+			</form>
+			
+			<button @click="demo">TEST</button>
+			
+			<p>Produit 2 = {{ produit.libelle }}</p>
+		</div>
+		
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+		
+		<script>
+			new Vue({
+			 	data: {
+			 		produit: { libelle: "test" }
+			 	},
+			 	
+			 	methods: {
+			 		demo() {
+			 			this.produit.libelle = "DEMO";
+			 		}
+			 	}
+			}).$mount("#vue");
+		</script>
+		
+		
 		<a href="ajouter-produit" class="btn btn-success">Ajouter un produit</a>
 		
 		<table class="table table-striped">
