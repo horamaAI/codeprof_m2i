@@ -10,18 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.formation.service.FournisseurService;
 
-@WebServlet("/liste-fournisseur")
-public class ListeFournisseurServlet extends HttpServlet {
+@WebServlet("/supprimer-fournisseur")
+public class SupprimerFournisseurServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//On récupère le paramètre identifiant fournisseur
+		String fournisseurIdString = req.getParameter("id");
+		int fournisseurId = Integer.parseInt(fournisseurIdString);
 		FournisseurService srvFournisseur = new FournisseurService();
 		
-		//On enregistre la liste de fournisseurs dans le scope Request
-		req.setAttribute("fournisseurs", srvFournisseur.findAll());
+		//On supprime ....
+		srvFournisseur.deleteById(fournisseurId);
 		
-		//On délègue vers la vue
-		this.getServletContext()
-			.getRequestDispatcher("/WEB-INF/liste-fournisseurs.jsp")
-			.forward(req, resp);
+		//On redirige vers la page de liste des fournisseurs
+		resp.sendRedirect("liste-fournisseur");
 	}
 }

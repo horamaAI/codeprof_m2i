@@ -29,6 +29,13 @@ public class FournisseurService {
 		this.daoFournisseur.add(fournisseur);
 	}
 	
+	public void update(Fournisseur fournisseur) {
+		//Eventuellement des vérifications ici ...
+		
+		//On demande à la DAO de modifier le fournisseur
+		this.daoFournisseur.update(fournisseur);
+	}
+	
 	public void deleteById(int id) {
 		this.daoFournisseur.deleteById(id);
 	}
