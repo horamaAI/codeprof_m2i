@@ -17,7 +17,7 @@ public class AjouterFournisseurServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		this.getServletContext()
-			.getRequestDispatcher("/WEB-INF/ajouter-fournisseur.jsp")
+			.getRequestDispatcher("/WEB-INF/form-fournisseur.jsp")
 			.forward(req, resp);
 	}
 	

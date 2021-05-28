@@ -27,7 +27,7 @@ public class ModifierFournisseurServlet extends HttpServlet {
 		req.setAttribute("fournisseur", fournisseur);
 		
 		this.getServletContext()
-			.getRequestDispatcher("/WEB-INF/modifier-fournisseur.jsp")
+			.getRequestDispatcher("/WEB-INF/form-fournisseur.jsp")
 			.forward(req, resp);
 	}
 	

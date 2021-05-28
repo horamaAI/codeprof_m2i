@@ -2,7 +2,10 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
 
 <t:layout>
-	<jsp:attribute name="title">Modifier le fournisseur</jsp:attribute>
+	<jsp:attribute name="title">
+		<c:if test="${ fournisseur == null }">Ajouter un fournisseur</c:if>
+		<c:if test="${ fournisseur != null }">Modifier le fournisseur</c:if>
+	</jsp:attribute>
 	
 	<jsp:body>
 		<form method="POST">
@@ -27,7 +30,13 @@
 			</div>
 			
 			<div>
-				<input type="submit" class="btn btn-success" value="Modifier" />
+				<c:if test="${ fournisseur == null }">
+					<input type="submit" class="btn btn-success" value="Ajouter" />
+				</c:if>
+				
+				<c:if test="${ fournisseur != null }">
+					<input type="submit" class="btn btn-warning" value="Modifier" />
+				</c:if>
 			</div>
 		</form>
 	</jsp:body>
