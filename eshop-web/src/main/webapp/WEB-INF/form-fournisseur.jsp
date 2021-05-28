@@ -9,6 +9,9 @@
 	
 	<jsp:body>
 		<form method="POST">
+			<!-- Exemple d'utilisation des tags : fabriquer un composant HTML -->
+			<t:input name="nom" label="Nom du fournisseur" value="${ fournisseur.nom }" />
+			
 			<div>
 				<label>Nom</label>
 				<input type="text" name="nom" value="${ fournisseur.nom }" />
