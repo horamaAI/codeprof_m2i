@@ -40,4 +40,8 @@ public class ProduitService {
 		//On demande à la DAO de sauvegarder
 		this.dao.update(produit);
 	}
+	
+	public void deleteById(int id) {
+		this.dao.deleteById(id);
+	}
 }

@@ -11,34 +11,11 @@
 			</div>
 		</c:if>
 		
-		<h2>Démo VUEJS</h2>
-		<div id="vue">
-			<form>
-				<input v-model="produit.libelle" />
-			</form>
-			
-			<button @click="demo">TEST</button>
-			
-			<p>Produit 2 = {{ produit.libelle }}</p>
-		</div>
-		
-		
-		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-		
-		<script>
-			new Vue({
-			 	data: {
-			 		produit: { libelle: "test" }
-			 	},
-			 	
-			 	methods: {
-			 		demo() {
-			 			this.produit.libelle = "DEMO";
-			 		}
-			 	}
-			}).$mount("#vue");
-		</script>
-		
+		<c:if test="${ param.produitModifie == true }">
+			<div class="alert alert-success" role="alert">
+				Le produit a bien été modifié !
+			</div>
+		</c:if>
 		
 		<a href="ajouter-produit" class="btn btn-success">Ajouter un produit</a>
 		
@@ -48,6 +25,7 @@
 					<th>ID</th>
 					<th>Nom</th>
 					<th>Prix</th>
+					<th></th>
 				</tr>
 			</thead>
 			
@@ -57,6 +35,10 @@
 						<td>${ produit.getId() }</td>
 						<td>${ produit.libelle }</td>
 						<td><c:out value="${ produit.prix }" /></td>
+						<td>
+							<a href="modifier-produit?id=${ produit.id }" class="btn btn-warning">Modifier</a>
+							<a href="supprimer-produit?id=${ produit.id }" class="btn btn-danger">Supprimer</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

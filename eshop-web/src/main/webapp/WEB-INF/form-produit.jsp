@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
 <t:layout>
 	<jsp:attribute name="title">
@@ -10,7 +11,7 @@
 	<jsp:body>
 		<form method="POST">
 			<div>
-				<label>Libellé</label>
+				<label>LibellÃ©</label>
 				<input type="text" name="libelle" value="${ produit.libelle }" />
 			</div>
 			
@@ -28,16 +29,29 @@
 				<label>Fournisseur</label>
 				<select name="fournisseurId">
 					<c:forEach var="fournisseur" items="${ fournisseurs }">
-						<option value="${ fournisseur.id }">${ fournisseur.nom }</option>
+						<c:if test="${ produit.fournisseur.id == fournisseur.id }">
+							<option selected value="${ fournisseur.id }">${ fournisseur.nom }</option>
+						</c:if>
+						
+						<c:if test="${ produit.fournisseur.id != fournisseur.id }">
+							<option value="${ fournisseur.id }">${ fournisseur.nom }</option>
+						</c:if>
 					</c:forEach>
 				</select>
 			</div>
 			
 			<div>
-				<label>Catégorie</label>
+				<label>CatÃ©gorie</label>
 				<select name="categorieId">
 					<c:forEach var="categorie" items="${ categories }">
-						<option value="${ categorie.id }">${ categorie.libelle }</option>
+						<option
+								<c:if test="${ produit.categorie.id == categorie.id }">
+									selected
+								</c:if>
+								value="${ categorie.id }"
+							>
+								${ categorie.libelle }
+						</option>
 					</c:forEach>
 				</select>
 			</div>
