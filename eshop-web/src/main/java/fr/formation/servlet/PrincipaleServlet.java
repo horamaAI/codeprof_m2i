@@ -9,7 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public abstract class PrincipaleServlet extends HttpServlet {
-	public int getIntegerParameter(HttpServletRequest req, String parameterName) {
+	private HttpServletRequest req;
+	private HttpServletResponse resp;
+	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		this.req = req;
+		this.resp = resp;
+		
+		super.service(req, resp);
+	}
+	
+	public int getIntegerParameter(String parameterName) {
 		String idString = req.getParameter(parameterName);
 		
 		return Integer.parseInt(idString);
@@ -26,7 +37,7 @@ public abstract class PrincipaleServlet extends HttpServlet {
 		}
 	}
 	
-	public void delegate(HttpServletRequest req, HttpServletResponse resp, String viewName) throws ServletException, IOException {
+	public void delegate(String viewName) throws ServletException, IOException {
 		this.getServletContext()
 			.getRequestDispatcher("/WEB-INF/" + viewName + ".jsp")
 			.forward(req, resp);

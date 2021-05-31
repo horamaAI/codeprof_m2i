@@ -18,17 +18,19 @@ public class ModifierCategorieServlet extends PrincipaleServlet {
 		//On récupère l'id de la catégorie à modifier
 //		String categorieIdString = req.getParameter("id");
 //		int categorieId = Integer.parseInt(categorieIdString);
-		int categorieId = this.getIntegerParameter(req, "id");
+		int categorieId = this.getIntegerParameter("id");
 		
 		//On récupère la catégorie et on l'injecte dans le scope request
-		CategorieService srvCategorie = new CategorieService();
+//		CategorieService srvCategorie = new CategorieService();
+		CategorieService srvCategorie = this.createService(CategorieService.class);
+		
 		req.setAttribute("categorie", srvCategorie.findById(categorieId));
 		
 		//On récupère la liste des catégories et on l'injecte dans le scope request
 		req.setAttribute("categories", srvCategorie.findAll());
 		
 		//On délègue vers la vue
-		this.delegate(req, resp, "form-categorie");
+		this.delegate("form-categorie");
 		
 //		this.getServletContext()
 //			.getRequestDispatcher("/WEB-INF/form-categorie.jsp")
