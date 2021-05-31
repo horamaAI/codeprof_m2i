@@ -12,6 +12,30 @@
 	</head>
 	
 	<body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+ 			<a class="navbar-brand" href="home">eshop</a>
+
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="home">Accueil</a>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" href="liste-produit">Liste des produits</a>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" href="liste-fournisseur">Liste des fournisseurs</a>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" href="liste-categorie">Liste des catégories</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		
 		<div class="container">
 			<h1>
 				<jsp:invoke fragment="title" />
