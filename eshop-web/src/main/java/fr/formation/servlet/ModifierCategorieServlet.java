@@ -12,12 +12,13 @@ import fr.formation.model.Categorie;
 import fr.formation.service.CategorieService;
 
 @WebServlet("/modifier-categorie")
-public class ModifierCategorieServlet extends HttpServlet {
+public class ModifierCategorieServlet extends PrincipaleServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//On récupère l'id de la catégorie à modifier
-		String categorieIdString = req.getParameter("id");
-		int categorieId = Integer.parseInt(categorieIdString);
+//		String categorieIdString = req.getParameter("id");
+//		int categorieId = Integer.parseInt(categorieIdString);
+		int categorieId = this.getIntegerParameter(req, "id");
 		
 		//On récupère la catégorie et on l'injecte dans le scope request
 		CategorieService srvCategorie = new CategorieService();
@@ -27,9 +28,11 @@ public class ModifierCategorieServlet extends HttpServlet {
 		req.setAttribute("categories", srvCategorie.findAll());
 		
 		//On délègue vers la vue
-		this.getServletContext()
-			.getRequestDispatcher("/WEB-INF/form-categorie.jsp")
-			.forward(req, resp);
+		this.delegate(req, resp, "form-categorie");
+		
+//		this.getServletContext()
+//			.getRequestDispatcher("/WEB-INF/form-categorie.jsp")
+//			.forward(req, resp);
 	}
 	
 	@Override
