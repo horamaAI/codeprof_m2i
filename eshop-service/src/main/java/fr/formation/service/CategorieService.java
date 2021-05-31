@@ -21,4 +21,16 @@ public class CategorieService {
 		
 		return this.dao.findById(id).orElseThrow();
 	}
+	
+	public void add(Categorie categorie) {
+		this.dao.add(categorie);
+	}
+	
+	public void update(Categorie categorie) {
+		this.dao.update(categorie);
+	}
+	
+	public void deleteById(int id) {
+		this.dao.deleteById(id);
+	}
 }
