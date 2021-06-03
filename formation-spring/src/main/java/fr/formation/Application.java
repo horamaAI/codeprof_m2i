@@ -16,6 +16,8 @@ public class Application {
 		
 		// Récupération d'un bean Musicien
 		IMusicien musicien = myContext.getBean(IMusicien.class);
+		IMusicien musicien2 = myContext.getBean(IMusicien.class);
+		IMusicien musicien3 = myContext.getBean(IMusicien.class);
 		
 		// Manipulation de ce bean (faire jouer le musicien)
 		musicien.jouer();
