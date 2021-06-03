@@ -2,14 +2,20 @@ package fr.formation.service;
 
 import java.util.List;
 
-import fr.formation.dao.DAOFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fr.formation.dao.IProduitDao;
 import fr.formation.exception.IdMustBePositiveException;
 import fr.formation.model.Categorie;
 import fr.formation.model.Produit;
 
+@Service //On donne à SPRING sa gestion
 public class ProduitService {
-	private IProduitDao dao = DAOFactory.createProduitDao();
+//	private IProduitDao dao = DAOFactory.createProduitDao();
+	
+	@Autowired //On demande à SPRING la DAO
+	private IProduitDao dao;
 	
 	public List<Produit> findAll() {
 		return this.dao.findAll();
