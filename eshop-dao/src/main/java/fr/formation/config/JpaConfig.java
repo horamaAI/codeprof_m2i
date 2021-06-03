@@ -2,14 +2,19 @@ package fr.formation.config;
 
 import java.util.Properties;
 
+import javax.persistence.EntityManagerFactory;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
+@EnableTransactionManagement //Permet d'activer les annotations @Transactional
 public class JpaConfig {
 	
 	@Bean //Création d'un bean DataSource
@@ -41,5 +46,14 @@ public class JpaConfig {
 		hibernateProperties.setProperty("hibernate.show_sql", "true");
 		
 		return emf;
+	}
+	
+	@Bean //Création d'un bean TransactionManager
+	public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
+		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		
+		transactionManager.setEntityManagerFactory(emf);
+		
+		return transactionManager;
 	}
 }

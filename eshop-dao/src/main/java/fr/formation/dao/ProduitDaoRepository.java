@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
@@ -31,18 +32,21 @@ public class ProduitDaoRepository implements IProduitDao {
 	}
 
 	@Override
+	@Transactional
 	public Produit add(Produit entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	@Transactional
 	public Produit update(Produit entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	@Transactional
 	public boolean deleteById(int id) {
 		// TODO Auto-generated method stub
 		return false;
