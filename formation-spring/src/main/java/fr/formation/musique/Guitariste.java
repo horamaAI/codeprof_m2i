@@ -11,6 +11,10 @@ public class Guitariste implements IMusicien {
 		this.instrument = instrument;
 	}
 	
+	public Guitariste() {
+		System.out.println("CONSTRUCTION D'UN GUITARISTE");
+	}
+	
 	public void jouer() {
 		System.out.println("Le guitariste joue : " + this.instrument);
 	}
