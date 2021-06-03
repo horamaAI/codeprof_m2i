@@ -24,7 +24,9 @@ public class Application {
 //		musicien.jouer();
 		
 		//EXECUTEZ RUN DANS LE CONTEXTE DE SPRING
-		myContext.getBean(Application.class).run();
+		myContext.getBeanFactory()
+				.createBean(Application.class)
+				.run();
 	}
 	
 	@Autowired
