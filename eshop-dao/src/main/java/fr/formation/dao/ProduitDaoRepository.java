@@ -48,8 +48,12 @@ public class ProduitDaoRepository implements IProduitDao {
 	@Override
 	@Transactional
 	public boolean deleteById(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		this.em
+			.createQuery("delete Produit p where p.id = ?1")
+			.setParameter(1, id)
+			.executeUpdate();
+		
+		return true;
 	}
 
 	@Override

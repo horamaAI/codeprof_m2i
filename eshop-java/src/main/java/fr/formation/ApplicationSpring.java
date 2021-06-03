@@ -22,7 +22,9 @@ public class ApplicationSpring {
 		
 		//Parcours de la liste
 		for (Produit produit : mesProduits) {
-			System.out.println(produit.getLibelle());
+			System.out.println(produit.getId() + produit.getLibelle());
 		}
+		
+//		srvProduit.deleteById(6);
 	}
 }
