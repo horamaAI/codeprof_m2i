@@ -10,6 +10,10 @@ public class ProduitService {
 	@Autowired
 	private IDAOProduit daoProduit;
 	
+	public void setDaoProduit(IDAOProduit daoProduit) {
+		this.daoProduit = daoProduit;
+	}
+
 	public void findById(int id) {
 		System.out.println("Appel du repo produit findById ... ");
 		this.daoProduit.findById(id);
