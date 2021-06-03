@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import fr.formation.config.AppConfig;
-import fr.formation.musique.IMusicien;
-import fr.formation.service.ProduitService;
+import fr.formation.controller.ProduitController;
 
 public class Application {
 	public static void main(String[] args) {
@@ -30,14 +29,14 @@ public class Application {
 				.run();
 	}
 	
-	@Autowired
-	private IMusicien musicien;
+//	@Autowired
+//	private IMusicien musicien;
 	
 	@Autowired
-	private ProduitService srvProduit;
+	private ProduitController ctrlProduit;
 	
 	public void run() {
 //		musicien.jouer();
-		this.srvProduit.findById(1);
+		this.ctrlProduit.findById(1);
 	}
 }
