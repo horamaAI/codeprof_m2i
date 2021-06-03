@@ -2,12 +2,10 @@ package fr.formation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Component;
 
 import fr.formation.config.AppConfig;
 import fr.formation.musique.IMusicien;
 
-@Component
 public class Application {
 	public static void main(String[] args) {
 		// Chargement d'un contexte de SPRING
