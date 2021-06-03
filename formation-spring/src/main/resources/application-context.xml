@@ -7,9 +7,12 @@
 
 	<!-- Déclaration des beans (instances qui vont être managées par SPRING) -->
 	
-	<bean id="guitare" class="fr.formation.musique.Guitare" />
+	<!-- <bean id="guitare" class="fr.formation.musique.Guitare" />
 	
 	<bean id="guitariste" class="fr.formation.musique.Guitariste">
 		<property name="instrument" ref="guitare" />
-	</bean>
+	</bean> -->
+	
+	<!-- Demander à SPRING de scanner le package fr.formation (et sous-packages) -->
+	<context:component-scan base-package="fr.formation" />
 </beans>
