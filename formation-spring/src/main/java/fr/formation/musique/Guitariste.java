@@ -22,8 +22,15 @@ public class Guitariste implements IMusicien {
 	@Autowired
 	private List<IInstrument> instruments;
 	
-	public Guitariste() {
+//	public Guitariste() {
+//		System.out.println("CONSTRUCTION D'UN GUITARISTE");
+//		System.out.println(this.instrument); //NULL
+//	}
+	
+	@Autowired
+	public Guitariste(IInstrument instrument) {
 		System.out.println("CONSTRUCTION D'UN GUITARISTE");
+		System.out.println(instrument);
 	}
 	
 	public void jouer() {
