@@ -1,0 +1,45 @@
+package fr.formation.config;
+
+import java.util.Properties;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+
+@Configuration
+public class JpaConfig {
+	
+	@Bean //Création d'un bean DataSource
+	public BasicDataSource dataSource() {
+		BasicDataSource dataSource = new BasicDataSource();
+		
+		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/eshop?serverTimezone=UTC");
+		dataSource.setUsername("root");
+		dataSource.setPassword("");
+		dataSource.setMaxTotal(10);
+		
+		return dataSource;
+	}
+	
+	@Bean //Création d'un EntityManagerFactory pour SPRING
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(BasicDataSource dataSource) {
+		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
+		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+		Properties hibernateProperties = new Properties();
+		
+		emf.setDataSource(dataSource);
+		emf.setPackagesToScan("fr.formation.model");
+		emf.setJpaVendorAdapter(vendorAdapter);
+		emf.setJpaProperties(hibernateProperties);
+
+		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
+		hibernateProperties.setProperty("hibernate.show_sql", "true");
+		
+		return emf;
+	}
+}
