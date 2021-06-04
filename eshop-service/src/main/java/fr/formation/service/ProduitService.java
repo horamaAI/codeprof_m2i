@@ -9,6 +9,7 @@ import fr.formation.dao.IProduitDao;
 import fr.formation.exception.IdMustBePositiveException;
 import fr.formation.model.Categorie;
 import fr.formation.model.Produit;
+import fr.formation.projection.ProduitProjection;
 
 @Service //On donne à SPRING sa gestion
 public class ProduitService {
@@ -19,6 +20,10 @@ public class ProduitService {
 	
 	public List<Produit> findAll() {
 		return this.dao.findAll();
+	}
+	
+	public List<ProduitProjection> findAllProjected() {
+		return this.dao.findAllProjected();
 	}
 	
 	public List<Produit> findAllByCategorie(Categorie categorie) {

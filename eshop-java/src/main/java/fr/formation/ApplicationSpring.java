@@ -9,6 +9,7 @@ import fr.formation.config.AppConfig;
 import fr.formation.model.Categorie;
 import fr.formation.model.Commande;
 import fr.formation.model.Produit;
+import fr.formation.projection.ProduitProjection;
 import fr.formation.service.CommandeService;
 import fr.formation.service.ProduitService;
 
@@ -19,7 +20,7 @@ public class ApplicationSpring {
 				new AnnotationConfigApplicationContext(AppConfig.class);
 		
 		//Récupérer le service ProduitService
-//		ProduitService srvProduit = myContext.getBean(ProduitService.class);
+		ProduitService srvProduit = myContext.getBean(ProduitService.class);
 //		
 //		//Manipuler le service pour récupérer la liste des produits
 //		Categorie maCategorie = new Categorie();
@@ -37,6 +38,11 @@ public class ApplicationSpring {
 		CommandeService srvCommande = myContext.getBean(CommandeService.class);
 		for (Commande cmd : srvCommande.findAllByDates(LocalDateTime.now().plusDays(-100), LocalDateTime.now().plusDays(2))) {
 			System.out.println(cmd.getId());
+		}
+		
+		for (ProduitProjection p : srvProduit.findAllProjected()) {
+//			System.out.println(p.getId() + " - " + p.getLibelle() + ", " + p.getFournisseurNom());
+			System.out.println(p.getId() + " - " + p.getLibelle() + ", " + p.getFournisseur().getNom() + " " + p.getFournisseurVille() + "---" + p.getFournisseurAdresseComplete());
 		}
 		
 //		srvProduit.deleteById(6);
