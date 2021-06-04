@@ -27,22 +27,23 @@ public class ProduitDaoRepository implements IProduitDao {
 
 	@Override
 	public Optional<Produit> findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return Optional.ofNullable(
+			this.em.find(Produit.class, id)
+		);
 	}
 
 	@Override
 	@Transactional
 	public Produit add(Produit entity) {
-		// TODO Auto-generated method stub
-		return null;
+		this.em.persist(entity);
+		
+		return entity;
 	}
 
 	@Override
 	@Transactional
 	public Produit update(Produit entity) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.em.merge(entity);
 	}
 
 	@Override
@@ -58,14 +59,17 @@ public class ProduitDaoRepository implements IProduitDao {
 
 	@Override
 	public List<Produit> findAllByCategorie(Categorie categorie) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.em
+				.createQuery("select p from Produit p where p.categorie = ?1", Produit.class)
+				.setParameter(1, categorie)
+				.getResultList();
 	}
 
 	@Override
 	public List<Produit> findAllByCategorieId(int categorieId) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.em
+				.createQuery("select p from Produit p where p.categorie.id = ?1", Produit.class)
+				.setParameter(1, categorieId)
+				.getResultList();
 	}
-
 }
