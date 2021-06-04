@@ -13,6 +13,8 @@ public class ApplicationSpring {
 		
 		try {
 			srvProduit.findAll();
+			System.out.println("-- Directement de l'extérieur");
+			srvProduit.findAllDemoProxy();
 		}
 		
 		catch (RuntimeException rex) {

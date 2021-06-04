@@ -16,9 +16,15 @@ public class ProduitService {
 //		System.out.println("Démarrage de la transaction");
 		System.out.println("FIND ALL SERVICE");
 		this.daoProduit.findAll();
+		this.findAllDemoProxy();
 		
 //		throw new RuntimeException();
 		
 //		System.out.println("Fermeture de la transaction");
+	}
+	
+	@CustomTransactional
+	public void findAllDemoProxy() {
+		System.out.println("FIND ALL DEMO PROXY SERVICE");
 	}
 }
