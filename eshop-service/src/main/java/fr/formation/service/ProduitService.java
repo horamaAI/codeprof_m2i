@@ -37,14 +37,14 @@ public class ProduitService {
 		//Eventuellement ajouter des vérifications / validations ici
 		
 		//On demande à la DAO de sauvegarder (ajout)
-		this.dao.add(produit);
+		this.dao.save(produit);
 	}
 	
 	public void update(Produit produit) {
 		//Eventuellement vérifier si le produit n'est pas null, que l'identifiant existe bien, etc.
 		
 		//On demande à la DAO de sauvegarder
-		this.dao.update(produit);
+		this.dao.save(produit);
 	}
 	
 	public void deleteById(int id) {

@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement //Permet d'activer les annotations @Transactional
+@EnableJpaRepositories("fr.formation.dao") //On active SPRING DATA-JPA pour nos DAO
 public class JpaConfig {
 	
 	@Bean //Création d'un bean DataSource

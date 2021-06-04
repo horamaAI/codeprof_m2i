@@ -2,13 +2,17 @@ package fr.formation.service;
 
 import java.util.List;
 
-import fr.formation.dao.DAOFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fr.formation.dao.ICategorieDao;
 import fr.formation.exception.IdMustBePositiveException;
 import fr.formation.model.Categorie;
 
+@Service
 public class CategorieService {
-	private ICategorieDao dao = DAOFactory.createCategoryDao();
+	@Autowired
+	private ICategorieDao dao;
 	
 	public List<Categorie> findAll() {
 		return this.dao.findAll();
@@ -23,11 +27,11 @@ public class CategorieService {
 	}
 	
 	public void add(Categorie categorie) {
-		this.dao.add(categorie);
+		this.dao.save(categorie);
 	}
 	
 	public void update(Categorie categorie) {
-		this.dao.update(categorie);
+		this.dao.save(categorie);
 	}
 	
 	public void deleteById(int id) {
