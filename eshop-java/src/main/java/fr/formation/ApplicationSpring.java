@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import fr.formation.config.AppConfig;
+import fr.formation.model.Categorie;
 import fr.formation.model.Produit;
 import fr.formation.service.ProduitService;
 
@@ -18,7 +19,11 @@ public class ApplicationSpring {
 		ProduitService srvProduit = myContext.getBean(ProduitService.class);
 		
 		//Manipuler le service pour récupérer la liste des produits
-		List<Produit> mesProduits = srvProduit.findAll();
+		Categorie maCategorie = new Categorie();
+		
+		maCategorie.setId(1);
+		
+		List<Produit> mesProduits = srvProduit.findAllByCategorie(maCategorie);
 		
 		//Parcours de la liste
 		for (Produit produit : mesProduits) {
