@@ -12,8 +12,10 @@ import org.springframework.dao.annotation.PersistenceExceptionTranslationPostPro
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
+@EnableTransactionManagement
 public class JpaConfig {
 	//DATASOURCE
 	@Bean
@@ -21,9 +23,9 @@ public class JpaConfig {
 		BasicDataSource dataSource = new BasicDataSource();
 		
 		//Configuration de la source de données
-		dataSource.setDriverClassName("com.mysql.jbdc.Driver");
+		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://localhost:3306/eshop?serverTimezone=UTC");
-		dataSource.setUsername("rot");
+		dataSource.setUsername("root");
 		dataSource.setPassword("");
 		dataSource.setMaxTotal(10);
 		
@@ -38,7 +40,7 @@ public class JpaConfig {
 		
 		//Configuration de l'EntityManagerFactory
 		emf.setDataSource(dataSource);
-		emf.setPackagesToScan("com.cgi.model");
+		emf.setPackagesToScan("fr.formation.model");
 		emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		
 		//Préparation des properties Hibernate

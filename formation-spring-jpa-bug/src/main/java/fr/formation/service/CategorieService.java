@@ -1,9 +1,14 @@
 package fr.formation.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fr.formation.dao.ICategorieDao;
 import fr.formation.model.Categorie;
 
+@Service
 public class CategorieService {
+	@Autowired
 	private ICategorieDao daoCategorie;
 	
 	public void update() {

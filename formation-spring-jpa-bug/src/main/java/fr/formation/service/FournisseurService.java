@@ -31,6 +31,7 @@ public class FournisseurService {
 		fournisseur.setNom("F1");
 		fournisseur.setTelephone("06xx");
 		fournisseur.setSiret("123456789123");
+		fournisseur.setEmail("blabla@gmail.com");
 		
 		this.daoFournisseur.save(fournisseur);
 	}

@@ -3,12 +3,17 @@ package fr.formation.repository;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
 
 import fr.formation.dao.ICategorieDao;
 import fr.formation.model.Categorie;
 
+@Repository
 public class CategorieRepository implements ICategorieDao {
+	@PersistenceContext
 	private EntityManager em;
 	
 	@Override

@@ -3,6 +3,7 @@ package fr.formation.repository;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -12,12 +13,14 @@ import fr.formation.model.Fournisseur;
 
 @Repository
 public class FournisseurRepository implements IFournisseurDao {
+	@PersistenceContext
 	private EntityManager em;
 	
 	@Override
 	public List<Fournisseur> findAll() {
 		List<Fournisseur> fournisseurs = em
-				.createQuery("select f from fournisseur f", Fournisseur.class)
+//				.createQuery("select f from Fournisseur f left join fetch f.produits p", Fournisseur.class)
+				.createQuery("select f from Fournisseur f", Fournisseur.class)
 				.getResultList();
 		
 		return fournisseurs;
@@ -41,6 +44,7 @@ public class FournisseurRepository implements IFournisseurDao {
 	}
 
 	@Override
+	@Transactional
 	public Fournisseur save(Fournisseur entity) {
 		if (entity.getId() > 0) {
 			entity = em.merge(entity); //Sauvegarde (UPDATE)
