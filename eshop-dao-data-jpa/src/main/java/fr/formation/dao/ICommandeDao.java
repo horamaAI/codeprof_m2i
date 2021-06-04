@@ -8,10 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import fr.formation.model.Commande;
+import fr.formation.projection.CommandeProjection;
 
 public interface ICommandeDao extends JpaRepository<Commande, Integer> {
 	//> Chercher les commandes pour une date entre A et B
-	public List<Commande> findAllByDateBetween(LocalDateTime start, LocalDateTime end);
+	public List<CommandeProjection> findAllByDateBetween(LocalDateTime start, LocalDateTime end);
 	public List<Commande> findAllByDateGreaterThanEqualAndDateLessThanEqual(LocalDateTime start, LocalDateTime end);
 	public List<Commande> findAllByDateAfterAndDateBefore(LocalDateTime start, LocalDateTime end);
 	

@@ -1,14 +1,13 @@
 package fr.formation;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import fr.formation.config.AppConfig;
-import fr.formation.model.Categorie;
-import fr.formation.model.Commande;
-import fr.formation.model.Produit;
+import fr.formation.projection.CommandeDetailProjection;
+import fr.formation.projection.CommandeProjection;
 import fr.formation.projection.ProduitProjection;
 import fr.formation.service.CommandeService;
 import fr.formation.service.ProduitService;
@@ -36,8 +35,12 @@ public class ApplicationSpring {
 		
 		
 		CommandeService srvCommande = myContext.getBean(CommandeService.class);
-		for (Commande cmd : srvCommande.findAllByDates(LocalDateTime.now().plusDays(-100), LocalDateTime.now().plusDays(2))) {
-			System.out.println(cmd.getId());
+		for (CommandeProjection cmd : srvCommande.findAllByDates(LocalDateTime.now().plusDays(-100), LocalDateTime.now().plusDays(2))) {
+			System.out.println(cmd.getId() + " " + cmd.getClientNom());
+			
+			for (CommandeDetailProjection detail : cmd.getDetails()) {
+				System.out.println(detail.getPrixUnitaire());
+			}
 		}
 		
 		for (ProduitProjection p : srvProduit.findAllProjected()) {
