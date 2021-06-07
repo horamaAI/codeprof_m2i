@@ -10,6 +10,8 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		
+		<spring.version>5.2.15.RELEASE</spring.version>
 	</properties>
 	
 	<dependencies>
@@ -32,7 +34,13 @@
 		    <version>2.2</version>
 		    <scope>provided</scope>
 		</dependency>
-				
+		
+		<!-- SPRING WEBMVC -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
 		
 		<!-- JSTL -->
 		<dependency>
