@@ -8,6 +8,7 @@ public class HomeController {
 	
 	@RequestMapping("/home") //On vient mapper /home sur cette méthode
 	public String home() {
-		return "/WEB-INF/home.jsp";
+//		return "/WEB-INF/home.jsp";
+		return "home"; //Le préfix / suffix est configuré dans WebConfig
 	}
 }
