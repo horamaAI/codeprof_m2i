@@ -40,4 +40,10 @@
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	
+	<!-- Délai session : durée d'inactivité (minutes) avant la destruction de la session -->
+	<session-config>
+		<session-timeout>15</session-timeout>
+	</session-config>
 </web-app>

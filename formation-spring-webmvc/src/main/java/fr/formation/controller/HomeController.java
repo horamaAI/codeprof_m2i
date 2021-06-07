@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import fr.formation.utilisateur.UserSession;
+
 @Controller
 @RequestMapping("/demo") //Permet de préfixer toutes les URL de /demo
 public class HomeController {
+	@Autowired
+	private UserSession userSession;
 	
 	//Tous les arguments reçus sont injectés par SPRING
 	@RequestMapping("/home") //On vient mapper /home sur cette méthode
 	public String home(HttpSession session, Model model) {
+		
+		System.out.println(this.userSession.isConnected());
+		
 		model.addAttribute("utilisateur", "Jérémy");
 		
 		
