@@ -19,6 +19,10 @@ public interface ICommandeDao extends JpaRepository<Commande, Integer> {
 	@Query("select c from Commande c where c.date >= ?1 and c.date <= ?2")
 	public List<Commande> findAllByDateQuery(LocalDateTime start, LocalDateTime end);
 	
+	@Query("select c from Commande c left join fetch c.details d where c.date >= ?1 and c.date <= ?2")
+	public List<CommandeProjection> findAllByDateBetweenFetching(LocalDateTime start, LocalDateTime end);
+	
+	
 	//> Chercher les commandes dont le prix est > N
 	public List<Commande> findAllByTotalGreaterThan(BigDecimal total);
 	
