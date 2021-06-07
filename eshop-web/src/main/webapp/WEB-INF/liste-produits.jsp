@@ -17,7 +17,7 @@
 			</div>
 		</c:if>
 		
-		<a href="ajouter-produit" class="btn btn-success">Ajouter un produit</a>
+		<a href="produit/ajouter" class="btn btn-success">Ajouter un produit</a>
 		
 		<table class="table table-striped">
 			<thead>
@@ -36,8 +36,8 @@
 						<td>${ produit.libelle }</td>
 						<td><c:out value="${ produit.prix }" /></td>
 						<td>
-							<a href="modifier-produit?id=${ produit.id }" class="btn btn-warning">Modifier</a>
-							<a href="supprimer-produit?id=${ produit.id }" class="btn btn-danger">Supprimer</a>
+							<a href="produit/modifier?id=${ produit.id }" class="btn btn-warning">Modifier</a>
+							<a href="produit/supprimer?id=${ produit.id }" class="btn btn-danger">Supprimer</a>
 						</td>
 					</tr>
 				</c:forEach>

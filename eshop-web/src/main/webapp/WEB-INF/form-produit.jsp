@@ -27,7 +27,7 @@
 			
 			<div>
 				<label>Fournisseur</label>
-				<select name="fournisseurId">
+				<select name="fournisseur.id">
 					<c:forEach var="fournisseur" items="${ fournisseurs }">
 						<c:if test="${ produit.fournisseur.id == fournisseur.id }">
 							<option selected value="${ fournisseur.id }">${ fournisseur.nom }</option>
@@ -42,7 +42,7 @@
 			
 			<div>
 				<label>Catégorie</label>
-				<select name="categorieId">
+				<select name="categorie.id">
 					<c:forEach var="categorie" items="${ categories }">
 						<option
 								<c:if test="${ produit.categorie.id == categorie.id }">
