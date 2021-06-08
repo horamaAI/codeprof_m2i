@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import fr.formation.model.Fournisseur;
 import fr.formation.model.Produit;
@@ -21,6 +22,7 @@ import fr.formation.service.FournisseurService;
 import fr.formation.service.ProduitService;
 
 @Controller
+@RestController
 @RequestMapping("/produit")
 public class ProduitController {
 	@Autowired
