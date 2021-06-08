@@ -51,6 +51,21 @@ public class ProduitController {
 		return "redirect:liste";
 	}
 	
+	@GetMapping("/modifier")
+	public String update(@RequestParam int id, Model model) {
+		model.addAttribute("fournisseurs", this.srvFournisseur.findAll());
+		model.addAttribute("categories", this.srvCategorie.findAll());
+		model.addAttribute("produit", this.srvProduit.findById(id));
+		
+		return "form-produit";
+	}
+	
+	@PostMapping("/modifier")
+	public String update(Produit produit) {
+		this.srvProduit.update(produit);
+		
+		return "redirect:liste";
+	}
 	
 	
 	@GetMapping("/supprimer")
