@@ -23,7 +23,7 @@
 			</div>
 		</c:if>
 		
-		<a href="ajouter-categorie" class="btn btn-success">Ajouter une catégorie</a>
+		<a href="categorie/ajouter" class="btn btn-success">Ajouter une catégorie</a>
 		
 		<table class="table table-striped">
 			<thead>
@@ -44,8 +44,8 @@
 						<td>${ categorie.description }</td>
 						<td>${ categorie.parent.libelle }</td>
 						<td>
-							<a href="modifier-categorie?id=${ categorie.id }" class="btn btn-warning">Modifier</a>
-							<a href="supprimer-categorie?id=${ categorie.id }" class="btn btn-danger">Supprimer</a>
+							<a href="categorie/modifier?id=${ categorie.id }" class="btn btn-warning">Modifier</a>
+							<a href="categorie/supprimer?id=${ categorie.id }" class="btn btn-danger">Supprimer</a>
 						</td>
 					</tr>
 				</c:forEach>

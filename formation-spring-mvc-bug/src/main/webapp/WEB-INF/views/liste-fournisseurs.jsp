@@ -23,7 +23,7 @@
 			</div>
 		</c:if>
 		
-		<a href="ajouter-fournisseur" class="btn btn-success">Ajouter un fournisseur</a>
+		<a href="fournisseur/ajouter" class="btn btn-success">Ajouter un fournisseur</a>
 		
 		<table class="table table-striped">
 			<thead>
@@ -44,8 +44,8 @@
 						<td>${ fournisseur.siret }</td>
 						<td>${ fournisseur.telephone }</td>
 						<td>
-							<a href="modifier-fournisseur?id=<c:out value="${ fournisseur.id }" />" class="btn btn-warning">Modifier</a>
-							<a href="supprimer-fournisseur?id=${ fournisseur.id }" class="btn btn-danger">Supprimer</a>
+							<a href="fournisseur/modifier?id=<c:out value="${ fournisseur.id }" />" class="btn btn-warning">Modifier</a>
+							<a href="fournisseur/supprimer?id=${ fournisseur.id }" class="btn btn-danger">Supprimer</a>
 						</td>
 					</tr>
 				</c:forEach>

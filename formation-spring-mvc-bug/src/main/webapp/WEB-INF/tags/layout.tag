@@ -6,7 +6,7 @@
 		<title><jsp:invoke fragment="title" /></title>
 		
 		<meta charset="UTF-8" />
-		<base href="/eshop-web/" />
+		<base href="/formation-spring-mvc-bug/" />
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 		<link rel="stylesheet" href="assets/css/style.css" />
 	</head>
@@ -22,15 +22,15 @@
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link" href="liste-produit">Liste des produits</a>
+						<a class="nav-link" href="produit">Liste des produits</a>
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link" href="liste-fournisseur">Liste des fournisseurs</a>
+						<a class="nav-link" href="fournisseur">Liste des fournisseurs</a>
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link" href="liste-categorie">Liste des catégories</a>
+						<a class="nav-link" href="categorie">Liste des catégories</a>
 					</li>
 				</ul>
 			</div>

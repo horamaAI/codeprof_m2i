@@ -72,6 +72,13 @@
 		    <version>2.8.0</version>
 		</dependency>
 		
+		<!-- SPRING WEB MVC -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		
 		<!-- Dépendance JSTL -->
 		<dependency>
 		    <groupId>javax.servlet</groupId>

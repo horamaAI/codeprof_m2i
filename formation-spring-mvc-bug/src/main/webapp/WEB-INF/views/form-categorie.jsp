@@ -22,7 +22,7 @@
 			
 			<div>
 				<label>Catégorie parent</label>
-				<select name="parentId">
+				<select name="parent.id">
 					<option value="0">- Pas de catégorie parent -</option>
 					
 					<c:forEach var="categorieParent" items="${ categories }">

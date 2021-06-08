@@ -1,5 +1,6 @@
 package fr.formation.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +14,14 @@ import fr.formation.service.FournisseurService;
 @Controller
 @RequestMapping("/fournisseur")
 public class FournisseurController {
+	@Autowired
 	private FournisseurService srvFournisseur;
 	
+	@GetMapping
 	public String findAll(Model model) {
 		model.addAttribute("fournisseurs", this.srvFournisseur.findAll());
 		
-		return "liste-fournisseur";
+		return "liste-fournisseurs";
 	}
 	
 	@GetMapping("/ajouter")
@@ -26,10 +29,14 @@ public class FournisseurController {
 		return "form-fournisseur";
 	}
 	
-	@GetMapping("/ajouter2")
+	@PostMapping("/ajouter")
 	public String add(Fournisseur fournisseur) {
 		this.srvFournisseur.add(fournisseur);
 		
+		// /fournisseur/ajouter -> /fournisseur
+		// /fournisseur/ajouter -> ./ -> /fournisseur/. -> /fournisseur/
+		// /fournisseur/ajouter -> /fournisseur -> /fournisseur
+		// /fournisseur/ajouter -> ./modifier -> /fournisseur/./modifier -> /fournisseur/modifier
 		return "redirect:.";
 	}
 	

@@ -23,7 +23,9 @@ public class CategorieController {
 	}
 	
 	@GetMapping("/categorie/ajouter")
-	public String add() {
+	public String add(Model model) {
+		model.addAttribute("categories", this.srvCategorie.findAll());
+		
 		return "form-categorie";
 	}
 	
@@ -34,14 +36,15 @@ public class CategorieController {
 		return "redirect:.";
 	}
 	
-	@GetMapping("/modifier")
+	@GetMapping("/categorie/modifier")
 	public String edit(@RequestParam int id, Model model) {
 		model.addAttribute("categorie", this.srvCategorie.findById(id));
+		model.addAttribute("categories", this.srvCategorie.findAll());
 		
-		return "form-catgorie";
+		return "form-categorie";
 	}
 	
-	@PostMapping("/modifier")
+	@PostMapping("/categorie/modifier")
 	public String edit(Categorie categorie) {
 		try {
 			this.srvCategorie.update(categorie);
@@ -54,7 +57,7 @@ public class CategorieController {
 		return "redirect:.";
 	}
 	
-	@GetMapping("/supprimer")
+	@GetMapping("/categorie/supprimer")
 	public String deleteById(@RequestParam int id) {
 		this.srvCategorie.deleteById(id);
 		

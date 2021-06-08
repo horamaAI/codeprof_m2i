@@ -30,14 +30,14 @@
 			</thead>
 			
 			<tbody>
-				<c:forEach var="produit" items="${ produit }">
+				<c:forEach var="produit" items="${ produits }">
 					<tr>
 						<td>${ produit.getId() }</td>
 						<td>${ produit.libelle }</td>
 						<td><c:out value="${ produit.prix }" /></td>
 						<td>
 							<a href="produit/modifier?id=${ produit.id }" class="btn btn-warning">Modifier</a>
-							<a href="produit/supprimer?id=${ produit.id }" class="btn btn-danger">Supprimer</a>
+							<a href="produit/supprimer/${ produit.id }" class="btn btn-danger">Supprimer</a>
 						</td>
 					</tr>
 				</c:forEach>

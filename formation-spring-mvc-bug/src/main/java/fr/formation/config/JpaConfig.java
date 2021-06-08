@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement //ACTIVATION DES ANNOTATIONS @Transactional
-@EnableJpaRepositories("fr.fromation.dao") //ACTIVATION DES REPO DATA-JPA
+@EnableJpaRepositories("fr.formation.dao") //ACTIVATION DES REPO DATA-JPA
 public class JpaConfig {
 	//DATASOURCE
 	@Bean
