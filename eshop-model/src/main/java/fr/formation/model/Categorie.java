@@ -15,12 +15,17 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.formation.projection.Views;
+
 @Entity
 @Table(name = "categorie")
 public class Categorie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CAT_ID")
+	@JsonView(Views.Common.class)
 	private int id;
 
 	@Column(name = "CAT_LIBELLE", length = 50, nullable = false)

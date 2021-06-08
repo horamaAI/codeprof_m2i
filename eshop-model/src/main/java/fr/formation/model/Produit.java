@@ -40,6 +40,7 @@ public class Produit {
 	@Column(name = "PRO_PRIX", precision = 10, scale = 2, nullable = false)
 	@NotNull(message = "Le prix peut pas être nul")
 	@Positive
+	@JsonView(Views.Produit.class)
 	private BigDecimal prix;
 	
 	@Column(name = "PRO_STOCK", nullable = false)
@@ -51,6 +52,7 @@ public class Produit {
 	
 	@Column(name = "PRO_PRIX_ACHAT", precision = 10, scale = 2, nullable = false)
 	@NotNull(message = "Le prix d''achat doit être saisi")
+	@JsonView(Views.ProduitDetailed.class)
 	private BigDecimal prixAchat;
 	
 	@Column(name = "PRO_DESCRIPTION")
@@ -59,11 +61,12 @@ public class Produit {
 	
 	@ManyToOne
 	@JoinColumn(name = "PRO_CATEGORIE_ID")
+	@JsonView(Views.ProduitDetailed.class)
 	private Categorie categorie;
 	
 	@ManyToOne
 	@JoinColumn(name = "PRO_FOURNISSEUR_ID")
-	@JsonView(Views.Produit.class)
+	@JsonView(Views.ProduitDetailed.class)
 	private Fournisseur fournisseur;
 	
 	@OneToMany(mappedBy = "id.produit")
