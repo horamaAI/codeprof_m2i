@@ -2,9 +2,12 @@ package fr.formation.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +48,15 @@ public class ProduitController {
 	}
 	
 	@PostMapping("/ajouter")
-	public String add(Produit produit) {
+	public String add(@Valid Produit produit, BindingResult result, Model model) {
+		//BindingResult : va contenir les informations de validation du Produit
+		if (result.hasErrors()) {
+			model.addAttribute("fournisseurs", this.srvFournisseur.findAll());
+			model.addAttribute("categories", this.srvCategorie.findAll());
+			
+			return "form-produit";
+		}
+		
 		this.srvProduit.add(produit);
 		
 		return "redirect:liste";

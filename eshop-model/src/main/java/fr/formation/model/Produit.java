@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -26,12 +27,13 @@ public class Produit {
 	private int id;
 	
 	@Column(name = "PRO_LIBELLE", length = 50, nullable = false) //Description SQL
-	@NotBlank //Vérification / validation supplémentaire
+	@NotBlank(message = "Attention, le libellé ne peut pas être vide !!!!!!") //Vérification / validation supplémentaire
 	@Size(max = 50) //Vérification / validation supplémentaire
 	private String libelle;
 	
 	@Column(name = "PRO_PRIX", precision = 10, scale = 2, nullable = false)
-	@NotNull
+	@NotNull(message = "Le prix peut pas être nul")
+	@Positive
 	private BigDecimal prix;
 	
 	@Column(name = "PRO_STOCK", nullable = false)
@@ -42,7 +44,7 @@ public class Produit {
 	private String image;
 	
 	@Column(name = "PRO_PRIX_ACHAT", precision = 10, scale = 2, nullable = false)
-	@NotNull
+	@NotNull(message = "Le prix d''achat doit être saisi")
 	private BigDecimal prixAchat;
 	
 	@Column(name = "PRO_DESCRIPTION")

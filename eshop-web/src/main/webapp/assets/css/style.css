@@ -1,3 +1,17 @@
 body {
 	font-size: 14px;
 }
+
+
+
+
+.error {
+	display: none;
+}
+
+.error ~ input {
+	border: none;
+	box-shadow: 0 0 5px red;
+	border-radius: 4px;
+	outline: none;
+}
