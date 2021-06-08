@@ -15,12 +15,17 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.formation.projection.Views;
+
 @Entity
 @Table(name = "fournisseur")
 public class Fournisseur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "FOU_ID")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	@Column(name = "FOU_NOM", length = 50, nullable = false)

@@ -18,17 +18,23 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.formation.projection.Views;
+
 @Entity
 @Table(name = "produit")
 public class Produit {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "PRO_ID")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	@Column(name = "PRO_LIBELLE", length = 50, nullable = false) //Description SQL
 	@NotBlank(message = "Attention, le libellé ne peut pas être vide !!!!!!") //Vérification / validation supplémentaire
 	@Size(max = 50) //Vérification / validation supplémentaire
+	@JsonView(Views.Produit.class)
 	private String libelle;
 	
 	@Column(name = "PRO_PRIX", precision = 10, scale = 2, nullable = false)
@@ -57,6 +63,7 @@ public class Produit {
 	
 	@ManyToOne
 	@JoinColumn(name = "PRO_FOURNISSEUR_ID")
+	@JsonView(Views.Produit.class)
 	private Fournisseur fournisseur;
 	
 	@OneToMany(mappedBy = "id.produit")
