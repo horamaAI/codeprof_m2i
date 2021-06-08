@@ -72,7 +72,13 @@ public class ProduitController {
 	}
 	
 	@PostMapping("/modifier")
-	public String update(Produit produit) {
+	public String update(@Valid Produit produit, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			model.addAttribute("fournisseurs", this.srvFournisseur.findAll());
+			model.addAttribute("categories", this.srvCategorie.findAll());
+			
+			return "form-produit";
+		}
 		this.srvProduit.update(produit);
 		
 		return "redirect:liste";
