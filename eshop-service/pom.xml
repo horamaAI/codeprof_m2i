@@ -9,6 +9,7 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<spring.version>5.2.15.RELEASE</spring.version>
 	</properties>
 	
 	<dependencies>
@@ -16,6 +17,13 @@
 			<groupId>fr.formation</groupId>
 			<artifactId>eshop-dao-data-jpa</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- SPRING WEBMVC -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		    <version>${spring.version}</version>
 		</dependency>
 	</dependencies>
 </project>

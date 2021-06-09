@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import fr.formation.dao.IProduitDao;
 import fr.formation.exception.IdMustBePositiveException;
+import fr.formation.exception.ProduitNotFoundException;
 import fr.formation.model.Categorie;
 import fr.formation.model.Produit;
 import fr.formation.projection.ProduitProjection;
@@ -35,14 +36,14 @@ public class ProduitService {
 			throw new IdMustBePositiveException();
 		}
 		
-		return this.dao.findById(id).orElseThrow();
+		return this.dao.findById(id).orElseThrow(ProduitNotFoundException::new);
 	}
 	
-	public void add(Produit produit) {
+	public Produit add(Produit produit) {
 		//Eventuellement ajouter des vérifications / validations ici
 		
 		//On demande à la DAO de sauvegarder (ajout)
-		this.dao.save(produit);
+		return this.dao.save(produit);
 	}
 	
 	public void update(Produit produit) {
