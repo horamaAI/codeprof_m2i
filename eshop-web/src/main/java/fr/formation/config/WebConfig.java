@@ -3,6 +3,8 @@ package fr.formation.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @Configuration
 @ComponentScan("fr.formation")
 @EnableWebMvc //On active la délégation des requêtes (Dispatcher vers nos contrôleurs)
+@Import(RepositoryRestMvcConfiguration.class) //On active DATA-REST
 public class WebConfig implements WebMvcConfigurer {
 	@Bean //Configuration du ViewResolver pour le chargement des vues
 	public UrlBasedViewResolver viewResolver() {
