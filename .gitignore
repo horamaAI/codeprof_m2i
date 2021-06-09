@@ -3,3 +3,5 @@
 bin/
 target/
 .settings/
+
+node_modules/

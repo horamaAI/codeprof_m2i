@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ import fr.formation.service.ProduitService;
 
 @RestController
 @RequestMapping("/api/produit")
+@CrossOrigin("*") //Permet de dire qu'on accepte les requêtes de tous les domaines (*)
 public class ProduitRestController {
 	@Autowired
 	private ProduitService srvProduit;
