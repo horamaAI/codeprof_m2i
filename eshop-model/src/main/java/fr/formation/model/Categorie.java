@@ -31,6 +31,7 @@ public class Categorie {
 	@Column(name = "CAT_LIBELLE", length = 50, nullable = false)
 	@NotBlank
 	@Size(min = 3, max = 50)
+	@JsonView(Views.Categorie.class)
 	private String libelle;
 
 	@Column(name = "CAT_DESCRIPTION")
@@ -41,6 +42,7 @@ public class Categorie {
 	
 	@ManyToOne
 	@JoinColumn(name = "CAT_PARENT_ID")
+	@JsonView(Views.CategorieDetailed.class)
 	private Categorie parent;
 	
 	@OneToMany(mappedBy = "parent")

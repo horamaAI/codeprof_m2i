@@ -26,8 +26,8 @@ public class CategorieService {
 		return this.dao.findById(id).orElseThrow();
 	}
 	
-	public void add(Categorie categorie) {
-		this.dao.save(categorie);
+	public Categorie add(Categorie categorie) {
+		return this.dao.save(categorie);
 	}
 	
 	public void update(Categorie categorie) {
