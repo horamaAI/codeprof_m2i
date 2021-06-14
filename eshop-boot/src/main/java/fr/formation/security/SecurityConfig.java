@@ -32,7 +32,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/produit/liste", true) //Redirection OK
 				.failureUrl("/page-login?erreur=true") //Redirection KO
 				.permitAll() //On autorise tout le monde
-				
+			
+			.and()
+			
+			.logout()
+				.logoutUrl("/perform_logout")
+				.logoutSuccessUrl("/page-login")
+				.permitAll()
 				
 //			.and().csrf().disable() //Désactiver la protection CSRF
 			;
