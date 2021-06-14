@@ -15,8 +15,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/assets/**").permitAll()
 			.antMatchers("/**").authenticated()
 			.and()
+			
 //			.httpBasic(); //Authentification Basic (utile pour Angular, Vue, etc. par exemple)
-			.formLogin();
+			
+			.formLogin()
+				.loginPage("/page-login") //GET de formulaire de connexion
+				.loginProcessingUrl("/perform_login") //POST géré par SPRING SECURITY
+				.defaultSuccessUrl("/produit/liste", true) //Redirection OK
+				.failureUrl("/page-login?erreur=true") //Redirection KO
+				.permitAll() //On autorise tout le monde
+				
+				
+//			.and().csrf().disable() //Désactiver la protection CSRF
+			;
 	}
 	
 	@Override //CONFIGURATION DES USERS
