@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.formation.model.Fournisseur;
 import fr.formation.model.Produit;
+import fr.formation.security.UtilisateurPrincipal;
 import fr.formation.service.CategorieService;
 import fr.formation.service.FournisseurService;
 import fr.formation.service.ProduitService;
@@ -98,6 +100,35 @@ public class ProduitController {
 		
 		return "redirect:liste";
 	}
+	
+//	@GetMapping("/commander")
+//	public String commander(@RequestParam int id, Authentication auth) {
+//		UtilisateurPrincipal principal = (UtilisateurPrincipal)auth.getPrincipal();
+//		
+//		System.out.println(principal.getUsername());
+//		System.out.println("Commande du produit " + id);
+//		
+//		
+//		return "redirect:liste";
+//	}
+	
+	@GetMapping("/commander")
+	public String commander(@RequestParam int id, @AuthenticationPrincipal UtilisateurPrincipal principal) {
+		System.out.println(principal.getUsername());
+		System.out.println("Commande du produit " + id);
+		
+		return "redirect:liste";
+	}
+	
+	
+	
+	
+	
+	
+	
+	// ---------------------------------------------------
+	
+	
 	
 	@ModelAttribute("demo")
 	public String demo() {
