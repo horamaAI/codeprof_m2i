@@ -32,6 +32,13 @@
 					<li class="nav-item">
 						<a class="nav-link" href="liste-categorie">Liste des catégories</a>
 					</li>
+					
+					<li class="nav-item">
+						<form method="POST" action="perform_logout">
+							<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }" />
+							<input type="submit" value="Déconnexion" class="btn btn-danger" />
+						</form>
+					</li>
 				</ul>
 			</div>
 		</nav>
