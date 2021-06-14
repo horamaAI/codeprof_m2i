@@ -2,6 +2,7 @@ package fr.formation.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -10,11 +11,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override //CONFIGURATION DES ACCES
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/assets/**").permitAll()
+			
+			//On va remplacer cette ligne par de l'accès par annotation
+//			.antMatchers("/produit/ajouter", "/produit/modifier", "/produit/supprimer").hasRole("ADMIN")
+			
 			.antMatchers("/**").authenticated()
 			.and()
 			

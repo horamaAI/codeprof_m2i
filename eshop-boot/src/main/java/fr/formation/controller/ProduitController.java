@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,6 +42,7 @@ public class ProduitController {
 		return "liste-produits";
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/ajouter")
 	public String add(Model model) {
 //		model.addAttribute("fournisseurs", this.srvFournisseur.findAll());
@@ -48,7 +50,8 @@ public class ProduitController {
 		
 		return "form-produit";
 	}
-	
+
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/ajouter")
 	public String add(@Valid Produit produit, BindingResult result, Model model) {
 		//BindingResult : va contenir les informations de validation du Produit
@@ -63,7 +66,8 @@ public class ProduitController {
 		
 		return "redirect:liste";
 	}
-	
+
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/modifier")
 	public String update(@RequestParam int id, Model model) {
 //		model.addAttribute("fournisseurs", this.srvFournisseur.findAll());
@@ -72,7 +76,8 @@ public class ProduitController {
 		
 		return "form-produit";
 	}
-	
+
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/modifier")
 	public String update(@Valid Produit produit, BindingResult result, Model model) {
 		if (result.hasErrors()) {
@@ -85,7 +90,8 @@ public class ProduitController {
 		
 		return "redirect:liste";
 	}
-	
+
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/supprimer")
 	public String deleteById(@RequestParam int id) {
 		this.srvProduit.deleteById(id);

@@ -7,6 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import fr.formation.dao.IUtilisateurDao;
 import fr.formation.model.Utilisateur;
 
+// Implémentation de CommandLineRunner pour que SPRING BOOT exécute run() au démarrage
+
 //@Service
 public class InitDataService implements CommandLineRunner {
 	@Autowired

@@ -12,6 +12,8 @@
 	<jsp:body>
 	${ demo } ...
 		<form:form method="POST" modelAttribute="produit">
+			<%-- <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }" /> --%>
+			
 			<form:errors path="*" cssClass="alert alert-danger" element="div" />
 			
 			<div>
