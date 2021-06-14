@@ -15,7 +15,7 @@ public class Utilisateur {
 	@Column(name = "UTI_ID")
 	private int id;
 	
-	@Column(name = "UTI_USERNAME", length = 50, nullable = false)
+	@Column(name = "UTI_USERNAME", length = 50, nullable = false, unique = true)
 	private String username;
 	
 	@Column(name = "UTI_PASSWORD", length = 300, nullable = false)
